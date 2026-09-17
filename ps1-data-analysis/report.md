@@ -15,7 +15,9 @@
 | 9 | Goodfellas (1990) | 126 | 4.250 |
 | 10 | Casablanca (1942) | 100 | 4.240 |
 
-...the smell test: does this look right? why or why not...
+This looks plausible because every movie shown has at least 50 ratings, so the result is not
+being driven by only a few people. The top movie has 317 ratings and an average of about 4.4,
+which is very good without looking suspiciously perfect.
 
 ## Task 2. Broadest taste
 
@@ -25,7 +27,10 @@
 | 2 | 478 | 17 |
 | 3 | 507 | 17 |
 
-...the smell test: does this look right? why or why not...
+This result seems possible because one movie can belong to several genres, so a user who rated
+21 or 22 movies could cover 17 different genres. I am less certain about this result than Task
+1, because the output alone cannot show whether the pipe-separated genre lists were split and
+counted correctly; that needs a small test dataset.
 
 ## Task 3. User pairs with shared viewing habits
 
@@ -40,7 +45,10 @@
 | 5 | 274 and 414 | 856 |
 
 ### Why this might give an uninteresting result
-...your text goes here...
+The raw count favors users who rated a very large number of movies. A prolific user such as
+414 can match with many different people simply because there are many chances for overlap,
+even when the shared movies are only a modest part of either person's overall viewing. This
+can hide two users whose smaller, niche movie lists are very similar to each other.
 
 ### An alternative measure
 
@@ -52,6 +60,10 @@
 | 4 | 126 and 379 | 0.6818 |
 | 5 | 242 and 468 | 0.6585 |
 
-...the smell test: does this look right? why or why not...
+This alternative seems more useful because sharing more movies does not necessarily mean two
+users have similar taste; they may simply both watch and rate many movies. Dividing the shared
+movies by all movies rated by either user measures how much of their viewing actually overlaps.
+The result can favor users with smaller movie lists, because sharing a modest number of movies
+can represent a large proportion of a small combined list.
 
 

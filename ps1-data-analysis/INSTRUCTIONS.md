@@ -149,6 +149,8 @@ mini-quiz afterwards. It's fine to ask your agent to help you work through them.
 
 ## Submitting
 
-Commit your work as you go, push, and submit on Canvas with a note that it is ready for grading.
+Commit as you go, and push. On Canvas, submit the URL of your personal assignments repository,
+`https://github.com/<your-github-username>/si212-assignments-<your-uniqname>`. What gets graded is
+whatever is on `main` at the deadline, so work you have not pushed has not been handed in.
 
 Due **Wed Sep 16, 11:59 PM**.

@@ -1,0 +1,157 @@
+{
+  "task1": [
+    {
+      "movieId": 318,
+      "title": "Shawshank Redemption, The (1994)",
+      "rating_count": 317,
+      "average_rating": 4.429022082018927
+    },
+    {
+      "movieId": 858,
+      "title": "Godfather, The (1972)",
+      "rating_count": 192,
+      "average_rating": 4.2890625
+    },
+    {
+      "movieId": 2959,
+      "title": "Fight Club (1999)",
+      "rating_count": 218,
+      "average_rating": 4.272935779816514
+    },
+    {
+      "movieId": 1276,
+      "title": "Cool Hand Luke (1967)",
+      "rating_count": 57,
+      "average_rating": 4.271929824561403
+    },
+    {
+      "movieId": 750,
+      "title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)",
+      "rating_count": 97,
+      "average_rating": 4.268041237113402
+    },
+    {
+      "movieId": 904,
+      "title": "Rear Window (1954)",
+      "rating_count": 84,
+      "average_rating": 4.261904761904762
+    },
+    {
+      "movieId": 1221,
+      "title": "Godfather: Part II, The (1974)",
+      "rating_count": 129,
+      "average_rating": 4.25968992248062
+    },
+    {
+      "movieId": 48516,
+      "title": "Departed, The (2006)",
+      "rating_count": 107,
+      "average_rating": 4.252336448598131
+    },
+    {
+      "movieId": 1213,
+      "title": "Goodfellas (1990)",
+      "rating_count": 126,
+      "average_rating": 4.25
+    },
+    {
+      "movieId": 912,
+      "title": "Casablanca (1942)",
+      "rating_count": 100,
+      "average_rating": 4.24
+    }
+  ],
+  "task2": [
+    {
+      "userId": 127,
+      "genre_count": 17
+    },
+    {
+      "userId": 478,
+      "genre_count": 17
+    },
+    {
+      "userId": 507,
+      "genre_count": 17
+    }
+  ],
+  "task3": {
+    "naive": [
+      {
+        "users": [
+          414,
+          599
+        ],
+        "movies_in_common": 1338
+      },
+      {
+        "users": [
+          414,
+          474
+        ],
+        "movies_in_common": 1077
+      },
+      {
+        "users": [
+          68,
+          414
+        ],
+        "movies_in_common": 950
+      },
+      {
+        "users": [
+          414,
+          448
+        ],
+        "movies_in_common": 914
+      },
+      {
+        "users": [
+          274,
+          414
+        ],
+        "movies_in_common": 856
+      }
+    ],
+    "alternative": {
+      "measure": "Jaccard similarity: the number of movies both users rated divided by the number of distinct movies rated by either user.",
+      "pairs": [
+        {
+          "users": [
+            130,
+            145
+          ],
+          "score": 0.7
+        },
+        {
+          "users": [
+            130,
+            574
+          ],
+          "score": 0.7
+        },
+        {
+          "users": [
+            130,
+            468
+          ],
+          "score": 0.6944444444444444
+        },
+        {
+          "users": [
+            126,
+            379
+          ],
+          "score": 0.6818181818181818
+        },
+        {
+          "users": [
+            242,
+            468
+          ],
+          "score": 0.6585365853658537
+        }
+      ]
+    }
+  }
+}

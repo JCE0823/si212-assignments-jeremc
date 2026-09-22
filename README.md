@@ -20,4 +20,13 @@ Handing something in means committing it here and pushing.
 
 ## What's here now
 
-Nothing yet. Assignments will be added before they are due.
+- [`ps1-data-analysis`](ps1-data-analysis/INSTRUCTIONS.md): Problem Set 1, Data Analysis and
+  Testing. Start with its `INSTRUCTIONS.md`.
+
+The rest arrive the same way, each as a folder, before they are due.
+
+## Building something
+
+Anything you build for the course lives here: work for a problem set in that problem set's
+folder, and anything else in a folder of its own. To build with Superpowers, say so by name,
+"Use Superpowers to build …", and it works out the design with you before any code is written.

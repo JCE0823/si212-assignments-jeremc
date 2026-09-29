@@ -13,7 +13,10 @@ any code?
 
 ### q-undatasettable
 
-What kind of mistake can you imagine that you could not build a test dataset for?
+Suppose you were very thorough in imagining implementation errors, and each became a row in your
+table in `TEST-DATASETS.md`. The implementation passes every test built from that table, and the
+MovieLens data is exactly what its README says. If its answers are still wrong, where must the
+problem be, and why could no row in the table catch it?
 
 
 ### q-different-language

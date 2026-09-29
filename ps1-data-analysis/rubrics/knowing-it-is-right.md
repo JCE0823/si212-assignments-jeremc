@@ -21,17 +21,19 @@ questions.**
 ### q-undatasettable
 
 - **type:** free
-- **answer:** a mistake in the expectation itself. A hand-built dataset checks your code against
-  the answer you believe is right, so it can only ever catch a disagreement between the two. If
-  you have misread what the task asks, or misunderstood what a column means, you will build the
-  dataset to match that same misunderstanding and it will pass. Concrete instances: computing
-  the right answer to the wrong question, or both the code and the test data sharing a wrong
-  belief about what `genres` contains.
-- **credit:** full credit for the general form, that the dataset encodes your own expectation so
-  it cannot catch an error in that expectation. Half credit for a concrete example that is an
-  instance of it without the general statement. Also accept for full credit a well-argued
-  different category, such as a performance or scale problem, that genuinely cannot be
-  reproduced in a tiny hand-made file.
+- **answer:** in the expected results, which come from your own reading of the task. Each row's
+  right-hand column says what the correct answer should be, and you wrote it. A test can only
+  catch a disagreement between the code and that expectation, so if you misread what the task
+  asks, or misunderstood what a column in the data means, the code and the test data share the
+  misreading, agree with each other, and pass. Concrete instances: computing the right answer to
+  the wrong question, or both the code and the test data sharing a wrong belief about what
+  `genres` contains.
+- **credit:** full credit for both halves: the problem is in the expectation (your understanding
+  of the task or of the data), and the tests were built from that same expectation, so they
+  cannot disagree with it. Half credit for a concrete example of a misreading with no account of
+  why the tests pass anyway. No credit for another implementation error or a row nobody thought
+  of, which the question has already ruled out, or for errors in the data, which it has also
+  ruled out.
 
 
 ### q-different-language

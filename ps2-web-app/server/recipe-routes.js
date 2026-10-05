@@ -45,10 +45,14 @@ export function createRecipeRouter({ db }) {
     response.json(repository.list());
   });
 
+  router.get("/search", (request, response) => {
+    response.json(repository.search(request.query.q));
+  });
+
   router.get("/:id", (request, response) => {
     const id = parseId(request.params.id);
     if (id === null) return sendInvalidId(response);
-    const recipe = repository.getById(id);
+    const recipe = repository.getByIdAndRecordView(id);
     if (!recipe) return response.status(404).json({ error: "recipe_not_found" });
     return response.json(recipe);
   });

@@ -20,6 +20,10 @@ function mapRecipe(row, ingredients, instructions) {
   };
 }
 
+function escapeLikePattern(value) {
+  return value.replace(/[\\%_]/g, "\\$&");
+}
+
 export function createRecipeRepository(db) {
   const findRecipe = db.prepare("SELECT * FROM recipes WHERE id = ?");
   const findIngredients = db.prepare(
@@ -29,6 +33,12 @@ export function createRecipeRepository(db) {
     "SELECT text FROM instructions WHERE recipe_id = ? ORDER BY position"
   );
   const findAllRecipes = db.prepare("SELECT * FROM recipes ORDER BY id");
+  const findSearchResults = db.prepare(`
+    SELECT id, name, prep_minutes, cook_minutes, servings, source, view_count
+    FROM recipes
+    WHERE name LIKE ? ESCAPE '\\' COLLATE NOCASE
+    ORDER BY name COLLATE NOCASE, id
+  `);
   const insertRecipe = db.prepare(`
     INSERT INTO recipes (name, prep_minutes, cook_minutes, servings, notes, source)
     VALUES (@name, @prepMinutes, @cookMinutes, @servings, @notes, @source)
@@ -68,6 +78,27 @@ export function createRecipeRepository(db) {
     );
   }
 
+  function search(query) {
+    const escapedQuery = escapeLikePattern(String(query ?? ""));
+    const pattern = `%${escapedQuery}%`;
+    return findSearchResults.all(pattern).map((row) => ({
+      id: row.id,
+      name: row.name,
+      prepMinutes: row.prep_minutes,
+      cookMinutes: row.cook_minutes,
+      servings: row.servings,
+      source: row.source,
+      viewCount: row.view_count
+    }));
+  }
+
+  const getByIdAndRecordView = db.transaction((id) => {
+    const changed = db.prepare(
+      "UPDATE recipes SET view_count = view_count + 1 WHERE id = ?"
+    ).run(id).changes;
+    return changed === 0 ? null : getById(id);
+  });
+
   const create = db.transaction((input) => {
     const result = insertRecipe.run(input);
     const recipeId = Number(result.lastInsertRowid);
@@ -106,5 +137,5 @@ export function createRecipeRepository(db) {
 
   const remove = db.transaction((id) => deleteRecipe.run(id).changes > 0);
 
-  return { list, getById, create, update, remove };
+  return { list, getById, getByIdAndRecordView, search, create, update, remove };
 }

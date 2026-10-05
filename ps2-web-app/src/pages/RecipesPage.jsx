@@ -16,6 +16,7 @@ export function RecipesPage() {
   const [editorError, setEditorError] = useState("");
   const [saveStatus, setSaveStatus] = useState("idle");
   const [saveError, setSaveError] = useState("");
+  const [saveFieldErrors, setSaveFieldErrors] = useState({});
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleteStatus, setDeleteStatus] = useState("idle");
   const [deleteError, setDeleteError] = useState("");
@@ -44,6 +45,7 @@ export function RecipesPage() {
     setMessage("");
     setEditorError("");
     setSaveError("");
+    setSaveFieldErrors({});
     setEditor({ mode: "create", recipe: { source: "manual" } });
     setEditorStatus("ready");
   }
@@ -52,6 +54,7 @@ export function RecipesPage() {
     setMessage("");
     setEditorError("");
     setSaveError("");
+    setSaveFieldErrors({});
     setEditor({ mode: "edit", recipe: null, id: recipe.id, name: recipe.name });
     setEditorStatus("loading");
     try {
@@ -69,12 +72,14 @@ export function RecipesPage() {
     setEditorStatus("idle");
     setEditorError("");
     setSaveError("");
+    setSaveFieldErrors({});
   }
 
   async function saveRecipe(recipe) {
     if (saveStatus === "loading") return;
     setSaveStatus("loading");
     setSaveError("");
+    setSaveFieldErrors({});
     try {
       if (editor.mode === "edit") {
         await api.updateRecipe(editor.id, recipe);
@@ -88,9 +93,21 @@ export function RecipesPage() {
     } catch (error) {
       setSaveStatus("idle");
       setSaveError(error.message);
+      setSaveFieldErrors(error.fields ?? {});
       return;
     }
     setSaveStatus("idle");
+  }
+
+  function clearSaveFieldError(field) {
+    setSaveFieldErrors((current) => {
+      const next = { ...current };
+      delete next.body;
+      for (const key of Object.keys(next)) {
+        if (key === field || key.startsWith(`${field}.`)) delete next[key];
+      }
+      return next;
+    });
   }
 
   function beginDelete(recipe) {
@@ -158,6 +175,8 @@ export function RecipesPage() {
                 submitLabel={editor.mode === "edit" ? "Save Changes" : "Save Recipe"}
                 onSubmit={saveRecipe}
                 onCancel={closeEditor}
+                fieldErrors={saveFieldErrors}
+                onFieldChange={clearSaveFieldError}
               />
               {saveStatus === "loading" ? <p role="status">Saving recipe…</p> : null}
               {saveError ? <p role="alert">We couldn&apos;t save this recipe. {saveError}</p> : null}

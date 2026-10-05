@@ -126,6 +126,34 @@ form {
   max-width: 48rem;
 }
 
+.error-summary {
+  border: 2px solid var(--danger);
+  border-radius: 0.65rem;
+  background: #fff0f0;
+  padding: 0.9rem 1rem;
+}
+
+.error-summary h3 {
+  margin: 0 0 0.4rem;
+  color: var(--danger-dark);
+}
+
+.error-summary ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.field-error {
+  margin: -0.35rem 0 0.2rem;
+  color: var(--danger-dark);
+  font-weight: 700;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
 label,
 legend {
   color: var(--ink);

@@ -26,5 +26,26 @@ export function createApp({ db, generateRecipe } = {}) {
 
   app.use("/api/generate", createGenerationRouter({ generateRecipe }));
 
+  // Keep parser and unexpected server failures in the JSON API shape. Route
+  // handlers that already sent a response are left to Express to finish.
+  app.use((error, _request, response, next) => {
+    if (response.headersSent) return next(error);
+
+    if (error?.type === "entity.parse.failed") {
+      return response.status(400).json({ error: "invalid_json" });
+    }
+
+    const status = Number.isInteger(error?.status) && error.status >= 400 && error.status < 600
+      ? error.status
+      : 500;
+    if (status >= 500) {
+      console.error(error);
+    }
+
+    return response.status(status).json({
+      error: status >= 500 ? "internal_server_error" : "request_failed"
+    });
+  });
+
   return app;
 }

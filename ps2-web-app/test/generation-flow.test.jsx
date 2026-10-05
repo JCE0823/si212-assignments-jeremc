@@ -71,4 +71,30 @@ describe("AI recipe generation flow", () => {
       expect(screen.queryByText(/review this ai-generated recipe/i)).not.toBeInTheDocument();
     });
   });
+
+  it("shows server validation errors beside fields when saving a preview", async () => {
+    vi.spyOn(api, "searchRecipes").mockResolvedValue([]);
+    vi.spyOn(api, "generateRecipe").mockResolvedValue(aiPreview);
+    const saveError = Object.assign(new Error("Request failed: validation_failed"), {
+      fields: {
+        name: ["Name is already used."],
+        "ingredients.0.name": ["Ingredient name is required."]
+      }
+    });
+    vi.spyOn(api, "createRecipe").mockRejectedValue(saveError);
+
+    render(<SearchPage />);
+    await searchFor("Ethiopian lentil stew");
+    await userEvent.click(screen.getByRole("button", { name: /generate recipe/i }));
+    await screen.findByText(/review this ai-generated recipe/i);
+    await userEvent.click(screen.getByRole("button", { name: /save recipe/i }));
+
+    expect(await screen.findByRole("heading", { name: /please correct the following errors/i })).toBeVisible();
+    expect(screen.getByLabelText(/^name$/i)).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("Name is already used.")).toBeVisible();
+    expect(screen.getByText("Ingredient name is required.")).toBeVisible();
+
+    await userEvent.clear(screen.getByLabelText(/^name$/i));
+    expect(screen.queryByText("Name is already used.")).not.toBeInTheDocument();
+  });
 });

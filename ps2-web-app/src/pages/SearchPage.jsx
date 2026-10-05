@@ -14,6 +14,7 @@ export function SearchPage() {
   const [previewRecipe, setPreviewRecipe] = useState(null);
   const [saveStatus, setSaveStatus] = useState("idle");
   const [saveError, setSaveError] = useState("");
+  const [saveFieldErrors, setSaveFieldErrors] = useState({});
   const queryRef = useRef(query);
   const generationRequestRef = useRef(0);
 
@@ -27,6 +28,7 @@ export function SearchPage() {
     setGenerationStatus("idle");
     setGenerationError(null);
     setSaveError("");
+    setSaveFieldErrors({});
 
     try {
       const results = await api.searchRecipes(query);
@@ -65,6 +67,7 @@ export function SearchPage() {
     setGenerationStatus("loading");
     setGenerationError(null);
     setSaveError("");
+    setSaveFieldErrors({});
 
     try {
       const generatedRecipe = await api.generateRecipe(requestedQuery);
@@ -82,6 +85,7 @@ export function SearchPage() {
     if (saveStatus === "loading") return;
     setSaveStatus("loading");
     setSaveError("");
+    setSaveFieldErrors({});
 
     try {
       const savedRecipe = await api.createRecipe(reviewedRecipe);
@@ -93,7 +97,19 @@ export function SearchPage() {
     } catch (requestError) {
       setSaveStatus("idle");
       setSaveError(requestError.message);
+      setSaveFieldErrors(requestError.fields ?? {});
     }
+  }
+
+  function clearSaveFieldError(field) {
+    setSaveFieldErrors((current) => {
+      const next = { ...current };
+      delete next.body;
+      for (const key of Object.keys(next)) {
+        if (key === field || key.startsWith(`${field}.`)) delete next[key];
+      }
+      return next;
+    });
   }
 
   function discardPreview() {
@@ -101,6 +117,7 @@ export function SearchPage() {
     setGenerationStatus("idle");
     setGenerationError(null);
     setSaveError("");
+    setSaveFieldErrors({});
     setSaveStatus("idle");
     setStatus("not-found");
   }
@@ -189,6 +206,8 @@ export function SearchPage() {
             submitLabel="Save Recipe"
             onSubmit={savePreview}
             onCancel={discardPreview}
+            fieldErrors={saveFieldErrors}
+            onFieldChange={clearSaveFieldError}
           />
           {saveStatus === "loading" ? <p role="status">Saving recipe…</p> : null}
           {saveError ? <p role="alert">We couldn’t save this recipe. {saveError}</p> : null}

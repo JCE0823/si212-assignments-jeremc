@@ -83,8 +83,8 @@ export function RecipesPage() {
       }
       const editing = editor.mode === "edit";
       closeEditor();
-      const refreshed = await loadRecipes();
-      if (refreshed) setMessage(editing ? "Recipe updated." : "Recipe saved.");
+      setMessage(editing ? "Recipe updated." : "Recipe saved.");
+      await loadRecipes();
     } catch (error) {
       setSaveStatus("idle");
       setSaveError(error.message);
@@ -114,8 +114,8 @@ export function RecipesPage() {
       await api.deleteRecipe(deleteTarget.id);
       const deletedName = deleteTarget.name;
       cancelDelete();
-      const refreshed = await loadRecipes();
-      if (refreshed) setMessage(`${deletedName} deleted.`);
+      setMessage(`${deletedName} deleted.`);
+      await loadRecipes();
     } catch (error) {
       setDeleteStatus("error");
       setDeleteError(error.message);

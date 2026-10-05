@@ -78,6 +78,25 @@ describe("RecipesPage", () => {
     expect(create).toHaveBeenCalledWith(expect.objectContaining({ name: "Tomato Soup", source: "manual" }));
   });
 
+  it("acknowledges a successful save even when refreshing the list fails", async () => {
+    vi.spyOn(api, "listRecipes")
+      .mockResolvedValueOnce([])
+      .mockRejectedValueOnce(new Error("refresh down"));
+    vi.spyOn(api, "createRecipe").mockResolvedValue({ ...recipe, source: "manual" });
+
+    render(<RecipesPage />);
+    await userEvent.click(await screen.findByRole("button", { name: /add recipe/i }));
+    await userEvent.type(screen.getByLabelText(/^name$/i), "Tomato Soup");
+    await userEvent.type(screen.getByLabelText(/ingredient 1 quantity/i), "2");
+    await userEvent.type(screen.getByLabelText(/ingredient 1 name/i), "tomatoes");
+    await userEvent.type(screen.getByLabelText(/step 1 instruction/i), "Simmer everything.");
+    await userEvent.click(screen.getByRole("button", { name: /save recipe/i }));
+
+    expect(await screen.findByText("Recipe saved.")).toBeVisible();
+    expect(await screen.findByRole("alert")).toHaveTextContent(/couldn.t load your recipes/i);
+    expect(screen.getByRole("button", { name: /retry loading recipes/i })).toBeVisible();
+  });
+
   it("keeps a recipe visible and offers retry when deletion fails", async () => {
     vi.spyOn(api, "listRecipes").mockResolvedValue([summary]);
     vi.spyOn(api, "deleteRecipe").mockRejectedValue(new Error("network down"));

@@ -14,14 +14,15 @@ const app = createApp({ db });
 const port = Number(process.env.PORT || 3000);
 
 const server = app.listen(port, () => {
-  const address = server.address();
-  const boundPort = typeof address === "object" && address ? address.port : port;
-  console.log(`LISTENING ${boundPort}`);
+  console.log(`LISTENING ${server.address().port}`);
 });
 
-function closeServer() {
-  server.close(() => db.close());
+function shutdown() {
+  server.close(() => {
+    db.close();
+    process.exit(0);
+  });
 }
 
-process.once("SIGINT", closeServer);
-process.once("SIGTERM", closeServer);
+process.on("SIGTERM", shutdown);
+process.on("SIGINT", shutdown);

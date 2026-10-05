@@ -18,7 +18,13 @@ export function SearchPage() {
     try {
       const results = await searchRecipes(query);
       setMatches(results);
-      setStatus(results.length > 0 ? "matches" : "not-found");
+      if (results.length === 0) {
+        setStatus("not-found");
+      } else if (results.length === 1) {
+        await openRecipe(results[0].id);
+      } else {
+        setStatus("matches");
+      }
     } catch (requestError) {
       setError(requestError.message);
       setStatus("error");

@@ -1,7 +1,5 @@
-// @vitest-environment jsdom
-
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SearchPage } from "../src/pages/SearchPage.jsx";
 import * as api from "../src/api.js";
@@ -19,9 +17,24 @@ const recipe = {
   viewCount: 0
 };
 
-afterEach(() => vi.restoreAllMocks());
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+});
 
 describe("SearchPage", () => {
+  it("opens the only matching recipe automatically", async () => {
+    vi.spyOn(api, "searchRecipes").mockResolvedValue([{ id: 3, name: "Tomato Soup" }]);
+    vi.spyOn(api, "getRecipe").mockResolvedValue({ ...recipe, id: 3, name: "Tomato Soup", viewCount: 1 });
+
+    render(<SearchPage />);
+    await userEvent.type(screen.getByLabelText(/dish name/i), "tomato");
+    await userEvent.click(screen.getByRole("button", { name: /search/i }));
+
+    expect(await screen.findByRole("heading", { name: "Tomato Soup" })).toBeVisible();
+    expect(api.getRecipe).toHaveBeenCalledWith(3);
+  });
+
   it("shows multiple matches and opens the chosen recipe", async () => {
     vi.spyOn(api, "searchRecipes").mockResolvedValue([
       { id: 1, name: "Chicken Alfredo" },

@@ -2,6 +2,7 @@ import express from "express";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createGenerationRouter } from "./generation-route.js";
 import { createRecipeRouter } from "./recipe-routes.js";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -23,8 +24,7 @@ export function createApp({ db, generateRecipe } = {}) {
     app.use("/api/recipes", createRecipeRouter({ db }));
   }
 
-  // Keep this option available for the API routes added in later tasks.
-  void generateRecipe;
+  app.use("/api/generate", createGenerationRouter({ generateRecipe }));
 
   return app;
 }

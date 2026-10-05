@@ -34,6 +34,10 @@ export function searchRecipes(query) {
   return requestJSON(`/api/recipes/search?q=${encodeURIComponent(query)}`);
 }
 
+export function listRecipes() {
+  return requestJSON("/api/recipes");
+}
+
 export function getRecipe(id) {
   return requestJSON(`/api/recipes/${encodeURIComponent(id)}`);
 }
@@ -49,5 +53,18 @@ export function createRecipe(recipe) {
   return requestJSON("/api/recipes", {
     method: "POST",
     body: JSON.stringify(recipe)
+  });
+}
+
+export function updateRecipe(id, recipe) {
+  return requestJSON(`/api/recipes/${encodeURIComponent(id)}`, {
+    method: "PUT",
+    body: JSON.stringify(recipe)
+  });
+}
+
+export function deleteRecipe(id) {
+  return requestJSON(`/api/recipes/${encodeURIComponent(id)}`, {
+    method: "DELETE"
   });
 }

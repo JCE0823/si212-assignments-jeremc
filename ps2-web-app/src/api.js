@@ -37,3 +37,17 @@ export function searchRecipes(query) {
 export function getRecipe(id) {
   return requestJSON(`/api/recipes/${encodeURIComponent(id)}`);
 }
+
+export function generateRecipe(dishName) {
+  return requestJSON("/api/generate", {
+    method: "POST",
+    body: JSON.stringify({ dishName })
+  });
+}
+
+export function createRecipe(recipe) {
+  return requestJSON("/api/recipes", {
+    method: "POST",
+    body: JSON.stringify(recipe)
+  });
+}

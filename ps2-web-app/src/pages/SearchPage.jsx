@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { getRecipe, searchRecipes } from "../api.js";
+import * as api from "../api.js";
 import { RecipeCard } from "../components/RecipeCard.jsx";
+import { RecipeForm } from "../components/RecipeForm.jsx";
 
 export function SearchPage() {
   const [query, setQuery] = useState("");
@@ -8,15 +9,24 @@ export function SearchPage() {
   const [matches, setMatches] = useState([]);
   const [recipe, setRecipe] = useState(null);
   const [error, setError] = useState("");
+  const [generationStatus, setGenerationStatus] = useState("idle");
+  const [generationError, setGenerationError] = useState(null);
+  const [previewRecipe, setPreviewRecipe] = useState(null);
+  const [saveStatus, setSaveStatus] = useState("idle");
+  const [saveError, setSaveError] = useState("");
 
   async function submitSearch(event) {
     event.preventDefault();
     setStatus("loading");
     setError("");
     setRecipe(null);
+    setPreviewRecipe(null);
+    setGenerationStatus("idle");
+    setGenerationError(null);
+    setSaveError("");
 
     try {
-      const results = await searchRecipes(query);
+      const results = await api.searchRecipes(query);
       setMatches(results);
       if (results.length === 0) {
         setStatus("not-found");
@@ -36,13 +46,56 @@ export function SearchPage() {
     setError("");
 
     try {
-      const openedRecipe = await getRecipe(id);
+      const openedRecipe = await api.getRecipe(id);
       setRecipe(openedRecipe);
       setStatus("recipe");
     } catch (requestError) {
       setError(requestError.message);
       setStatus("error");
     }
+  }
+
+  async function generatePreview() {
+    if (generationStatus === "loading") return;
+    setGenerationStatus("loading");
+    setGenerationError(null);
+    setSaveError("");
+
+    try {
+      const generatedRecipe = await api.generateRecipe(query);
+      setPreviewRecipe(generatedRecipe);
+      setGenerationStatus("preview");
+    } catch (requestError) {
+      setGenerationError(requestError);
+      setGenerationStatus("error");
+    }
+  }
+
+  async function savePreview(reviewedRecipe) {
+    if (saveStatus === "loading") return;
+    setSaveStatus("loading");
+    setSaveError("");
+
+    try {
+      const savedRecipe = await api.createRecipe(reviewedRecipe);
+      setRecipe(savedRecipe);
+      setPreviewRecipe(null);
+      setGenerationStatus("idle");
+      setSaveStatus("idle");
+      setStatus("recipe");
+    } catch (requestError) {
+      setSaveStatus("idle");
+      setSaveError(requestError.message);
+    }
+  }
+
+  function discardPreview() {
+    setPreviewRecipe(null);
+    setGenerationStatus("idle");
+    setGenerationError(null);
+    setSaveError("");
+    setSaveStatus("idle");
+    setStatus("not-found");
   }
 
   return (
@@ -81,7 +134,54 @@ export function SearchPage() {
       {status === "recipe" && recipe ? <RecipeCard recipe={recipe} /> : null}
 
       {status === "not-found" ? (
-        <p role="status">No saved recipes matched “{query}”.</p>
+        <section aria-labelledby="not-found-heading">
+          <h2 id="not-found-heading">No saved recipes matched “{query}”.</h2>
+          {generationStatus === "idle" || generationStatus === "loading" ? (
+            <button
+              type="button"
+              onClick={generatePreview}
+              disabled={generationStatus === "loading"}
+            >
+              Generate recipe for “{query}”
+            </button>
+          ) : null}
+          {generationStatus === "loading" ? (
+            <p role="status">Generating a recipe preview…</p>
+          ) : null}
+          {generationStatus === "error" ? (
+            <div role="alert">
+              {generationError?.code === "generation_unavailable" ? (
+                <>
+                  <p>Recipe generation is unavailable. Ask an administrator to configure the AI service.</p>
+                  <button type="button" onClick={generatePreview}>Retry generation</button>
+                </>
+              ) : (
+                <>
+                  <p>We couldn’t generate a recipe right now. Please try again.</p>
+                  <button type="button" onClick={generatePreview}>Retry generation</button>
+                </>
+              )}
+            </div>
+          ) : null}
+        </section>
+      ) : null}
+
+      {generationStatus === "preview" && previewRecipe ? (
+        <section aria-labelledby="ai-review-heading">
+          <h2 id="ai-review-heading">Review this AI-generated recipe</h2>
+          <p>
+            AI recipes can contain mistakes. Review ingredients, allergy concerns, food-safety guidance,
+            and cooking times before saving.
+          </p>
+          <RecipeForm
+            initialRecipe={previewRecipe}
+            submitLabel="Save Recipe"
+            onSubmit={savePreview}
+            onCancel={discardPreview}
+          />
+          {saveStatus === "loading" ? <p role="status">Saving recipe…</p> : null}
+          {saveError ? <p role="alert">We couldn’t save this recipe. {saveError}</p> : null}
+        </section>
       ) : null}
 
       {status === "error" ? (

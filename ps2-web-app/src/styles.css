@@ -253,7 +253,7 @@ section[role="dialog"] button + button {
   margin-left: 0.5rem;
 }
 
-section[role="alert"] {
+[role="alert"] {
   border-left: 4px solid var(--danger);
   border-radius: 0.4rem;
   background: #fff0ed;

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SearchPage } from "../src/pages/SearchPage.jsx";
 import * as api from "../src/api.js";
@@ -45,5 +45,30 @@ describe("AI recipe generation flow", () => {
       notes: "Add lemon before serving.",
       source: "ai"
     }));
+  });
+
+  it("does not show a stale generation result after a different search starts", async () => {
+    let resolveGeneration;
+    vi.spyOn(api, "searchRecipes").mockResolvedValue([]);
+    vi.spyOn(api, "generateRecipe").mockImplementation(
+      () => new Promise((resolve) => {
+        resolveGeneration = resolve;
+      })
+    );
+
+    render(<SearchPage />);
+    await searchFor("Ethiopian lentil stew");
+    await userEvent.click(screen.getByRole("button", { name: /generate recipe/i }));
+    expect(screen.getByText(/generating a recipe preview/i)).toBeVisible();
+
+    await userEvent.clear(screen.getByLabelText(/dish name/i));
+    await userEvent.type(screen.getByLabelText(/dish name/i), "Tomato soup");
+    await userEvent.click(screen.getByRole("button", { name: /search/i }));
+    expect(await screen.findByText(/no saved recipes matched “tomato soup”/i)).toBeVisible();
+
+    resolveGeneration(aiPreview);
+    await waitFor(() => {
+      expect(screen.queryByText(/review this ai-generated recipe/i)).not.toBeInTheDocument();
+    });
   });
 });

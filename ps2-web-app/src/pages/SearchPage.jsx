@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as api from "../api.js";
 import { RecipeCard } from "../components/RecipeCard.jsx";
 import { RecipeForm } from "../components/RecipeForm.jsx";
@@ -14,9 +14,12 @@ export function SearchPage() {
   const [previewRecipe, setPreviewRecipe] = useState(null);
   const [saveStatus, setSaveStatus] = useState("idle");
   const [saveError, setSaveError] = useState("");
+  const queryRef = useRef(query);
+  const generationRequestRef = useRef(0);
 
   async function submitSearch(event) {
     event.preventDefault();
+    generationRequestRef.current += 1;
     setStatus("loading");
     setError("");
     setRecipe(null);
@@ -57,15 +60,19 @@ export function SearchPage() {
 
   async function generatePreview() {
     if (generationStatus === "loading") return;
+    const requestToken = ++generationRequestRef.current;
+    const requestedQuery = query;
     setGenerationStatus("loading");
     setGenerationError(null);
     setSaveError("");
 
     try {
-      const generatedRecipe = await api.generateRecipe(query);
+      const generatedRecipe = await api.generateRecipe(requestedQuery);
+      if (requestToken !== generationRequestRef.current || requestedQuery !== queryRef.current) return;
       setPreviewRecipe(generatedRecipe);
       setGenerationStatus("preview");
     } catch (requestError) {
+      if (requestToken !== generationRequestRef.current || requestedQuery !== queryRef.current) return;
       setGenerationError(requestError);
       setGenerationStatus("error");
     }
@@ -107,7 +114,11 @@ export function SearchPage() {
           id="dish-name"
           name="dishName"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            const nextQuery = event.target.value;
+            queryRef.current = nextQuery;
+            setQuery(nextQuery);
+          }}
           type="search"
         />
         <button type="submit">Search</button>

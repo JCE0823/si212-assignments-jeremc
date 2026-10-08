@@ -24,6 +24,8 @@ Handing something in means committing it here and pushing.
   Testing. Start with its `INSTRUCTIONS.md`.
 - [`ps2-web-app`](ps2-web-app/INSTRUCTIONS.md): Problem Set 2, React App with SQL Backend. An
   app of your own choosing. Start with its `INSTRUCTIONS.md`.
+- [`ps3`](ps3/INSTRUCTIONS.md): Problem Set 3, Deploying to Public Infrastructure. Your app on the
+  public internet, with sign-in. Start with its `INSTRUCTIONS.md`.
 
 The rest arrive the same way, each as a folder, before they are due.
 

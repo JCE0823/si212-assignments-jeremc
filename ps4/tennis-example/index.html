@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tennis simulator</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.4; }
+    label { display: block; margin: 0.75rem 0 0.2rem; font-weight: 600; }
+    .hint { font-weight: 400; color: #555; font-size: 0.9rem; }
+    input, select { font-size: 1rem; padding: 0.2rem 0.4rem; width: 8rem; }
+    button { margin-top: 1rem; font-size: 1rem; padding: 0.4rem 1.2rem; }
+    table { border-collapse: collapse; margin-top: 1rem; width: 100%; }
+    th, td { text-align: left; padding: 0.4rem; border-bottom: 1px solid #ccc; vertical-align: top; }
+    .error { color: #a00; }
+  </style>
+</head>
+<body>
+  <h1>Tennis simulator</h1>
+  <p>Plays many simulated matches between player A and player B, and reports how they came out.</p>
+
+  <form id="form" novalidate>
+    <label for="serveA">A's serve: % of points A wins when serving
+      <span class="hint">1 to 99</span></label>
+    <input id="serveA" type="number" min="1" max="99" step="any">
+
+    <label for="serveB">B's serve: % of points B wins when serving
+      <span class="hint">1 to 99</span></label>
+    <input id="serveB" type="number" min="1" max="99" step="any">
+
+    <label for="pressureA">A's pressure edge: percentage points added to A's chance on a point that can end a game or tie-break
+      <span class="hint">-20 to 20; negative means A chokes</span></label>
+    <input id="pressureA" type="number" min="-20" max="20" step="any">
+
+    <label for="bestOf">Match length</label>
+    <select id="bestOf">
+      <option value="3">best of 3 sets</option>
+      <option value="5">best of 5 sets</option>
+    </select>
+
+    <label for="matches">Matches to simulate
+      <span class="hint">10 to 20000</span></label>
+    <input id="matches" type="number" min="10" max="20000" step="1">
+
+    <div><button type="submit">Run</button></div>
+  </form>
+
+  <div id="output"></div>
+
+  <script src="sim.js"></script>
+  <script>
+    const names = Object.keys(Tennis.PARAMETERS);
+    const defaults = Tennis.defaults();
+    for (const name of names) document.getElementById(name).value = defaults[name];
+
+    const output = document.getElementById('output');
+    const pct = (x) => (100 * x).toFixed(1) + '%';
+
+    document.getElementById('form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const params = {};
+      for (const name of names) {
+        const raw = document.getElementById(name).value.trim();
+        params[name] = raw === '' ? NaN : Number(raw);
+      }
+      const problems = Tennis.validate(params);
+      if (problems.length) {
+        output.innerHTML = '<p class="error">' + problems.join('<br>') + '</p>';
+        return;
+      }
+      output.innerHTML = '<p>Running…</p>';
+      // Let the browser show "Running…" before the work starts.
+      setTimeout(() => {
+        const r = Tennis.simulate(params);
+        output.innerHTML = `
+          <table>
+            <tr><th>Output</th><th>Result</th><th>Spread</th></tr>
+            <tr><td>A wins the match</td><td>${pct(r.matchWin.estimate)}</td>
+                <td>95% interval ${pct(r.matchWin.low)} to ${pct(r.matchWin.high)}</td></tr>
+            <tr><td>A wins six matches in a row against B</td><td>${pct(r.sixInARow.estimate)}</td>
+                <td>95% interval ${pct(r.sixInARow.low)} to ${pct(r.sixInARow.high)}</td></tr>
+            <tr><td>A's share of the points played</td><td>${pct(r.pointShare.mean)} on average</td>
+                <td>middle 80% of matches: ${pct(r.pointShare.low)} to ${pct(r.pointShare.high)}</td></tr>
+            <tr><td>Sets that go to a tie-break</td><td>${pct(r.tiebreakSets.estimate)}</td>
+                <td>95% interval ${pct(r.tiebreakSets.low)} to ${pct(r.tiebreakSets.high)}</td></tr>
+            <tr><td>Points in a match</td><td>${r.matchLength.mean.toFixed(0)} on average</td>
+                <td>middle 80% of matches: ${r.matchLength.low} to ${r.matchLength.high}</td></tr>
+          </table>
+          <p>From ${params.matches} simulated matches.</p>`;
+      }, 20);
+    });
+  </script>
+</body>
+</html>

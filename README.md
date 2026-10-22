@@ -26,6 +26,8 @@ Handing something in means committing it here and pushing.
   app of your own choosing. Start with its `INSTRUCTIONS.md`.
 - [`ps3`](ps3/INSTRUCTIONS.md): Problem Set 3, Deploying to Public Infrastructure. Your app on the
   public internet, with sign-in. Start with its `INSTRUCTIONS.md`.
+- [`ps4`](ps4/INSTRUCTIONS.md): Problem Set 4, Simulation. A simulation of your own question, run
+  from a web page. Start with its `INSTRUCTIONS.md`.
 
 The rest arrive the same way, each as a folder, before they are due.
 

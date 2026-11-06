@@ -1,0 +1,8 @@
+{
+  "name": "zombie-shelter-simulation",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test sim.test.js"
+  }
+}

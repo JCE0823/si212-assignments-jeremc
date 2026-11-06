@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zombie shelter food simulation</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.4; }
+    label { display: block; margin: 0.75rem 0 0.2rem; font-weight: 600; }
+    .hint { font-weight: 400; color: #555; font-size: 0.9rem; }
+    input { font-size: 1rem; padding: 0.2rem 0.4rem; width: 8rem; }
+    button { margin-top: 1rem; font-size: 1rem; padding: 0.4rem 1.2rem; }
+    table { border-collapse: collapse; margin-top: 1rem; width: 100%; }
+    th, td { text-align: left; padding: 0.4rem; border-bottom: 1px solid #ccc; vertical-align: top; }
+    .error { color: #a00; }
+  </style>
+</head>
+<body>
+  <h1>Zombie shelter food simulation</h1>
+  <p>Simulate how stored meals and spoilage affect survival over 30 days.</p>
+
+  <form id="form" novalidate>
+    <label for="storedMeals">Meals stored
+      <span class="hint">0 to 120; whole meals</span></label>
+    <input id="storedMeals" type="number" min="0" max="120" step="1">
+
+    <label for="spoilageChance">Daily chance of spoilage
+      <span class="hint">0 to 20 percent</span></label>
+    <input id="spoilageChance" type="number" min="0" max="20" step="any">
+
+    <label for="mealsLost">Meals lost when spoilage occurs
+      <span class="hint">1 to 10; whole meals</span></label>
+    <input id="mealsLost" type="number" min="1" max="10" step="1">
+
+    <label for="replications">Runs to simulate
+      <span class="hint">10 to 20,000; whole runs</span></label>
+    <input id="replications" type="number" min="10" max="20000" step="1">
+
+    <div><button type="submit">Run</button></div>
+  </form>
+
+  <div id="output" aria-live="polite"></div>
+
+  <script src="sim.js"></script>
+  <script>
+    const names = Object.keys(ZombieShelter.PARAMETERS);
+    const defaults = ZombieShelter.defaults();
+    for (const name of names) document.getElementById(name).value = defaults[name];
+
+    const output = document.getElementById('output');
+    const pct = (x) => (100 * x).toFixed(1) + '%';
+    let pendingRun;
+
+    document.getElementById('form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      clearTimeout(pendingRun);
+      const params = {};
+      for (const name of names) {
+        const raw = document.getElementById(name).value.trim();
+        params[name] = raw === '' ? NaN : Number(raw);
+      }
+      const problems = ZombieShelter.validate(params);
+      if (problems.length) {
+        output.innerHTML = '<p class="error">' + problems.join('<br>') + '</p>';
+        return;
+      }
+      output.innerHTML = '<p>Running…</p>';
+      // Give the browser a chance to display the status before the simulation runs.
+      pendingRun = setTimeout(() => {
+        const result = ZombieShelter.simulate(params);
+        const mealResult = result.mealsRemaining
+          ? `${result.mealsRemaining.mean.toFixed(1)} meals on average`
+          : 'No successful runs';
+        const mealSpread = result.mealsRemaining
+          ? `middle 80%: ${result.mealsRemaining.low.toFixed(1)} to ${result.mealsRemaining.high.toFixed(1)} meals`
+          : 'Not applicable';
+        output.innerHTML = `
+          <table>
+            <tr><th>Result</th><th>Estimate</th><th>Spread</th></tr>
+            <tr><td>Survived all 30 days</td><td>${pct(result.survival.estimate)}</td>
+                <td>95% interval ${pct(result.survival.low)} to ${pct(result.survival.high)}</td></tr>
+            <tr><td>Days survived</td><td>${result.daysSurvived.mean.toFixed(1)} days on average</td>
+                <td>middle 80%: ${result.daysSurvived.low} to ${result.daysSurvived.high} days</td></tr>
+            <tr><td>Meals remaining after surviving 30 days</td><td>${mealResult}</td>
+                <td>${mealSpread}</td></tr>
+          </table>
+          <p>From ${params.replications} simulated runs.</p>`;
+      }, 20);
+    });
+  </script>
+</body>
+</html>

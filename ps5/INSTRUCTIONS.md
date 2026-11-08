@@ -107,8 +107,8 @@ are not in the record yet, and asks which ones you want to add.
 ## Check it yourself before you hand it in
 
 **Ask your agent whether Problem Set 5 is ready to submit.** It checks everything below that a
-program can check, then shows you each own-words part of your record and asks whether you wrote
-it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
+program can check, including that your work is committed and pushed, then shows you each
+own-words part of your record in turn and asks whether you wrote it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
 your own words, and it will ask you again.
 
 Also check, yourself, that the diagram matches what you built: every step, who does it, and the

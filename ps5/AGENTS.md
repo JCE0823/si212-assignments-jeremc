@@ -17,13 +17,15 @@ where `<course-materials>` is the folder `~/.codex/AGENTS.md` names.
 
 - **It changes how the workflow behaves:** a step added, removed or reordered, a step moved to a
   different lane, or a change to what a skill tells the agent to do. Rewording that keeps the
-  meaning, formatting, typo fixes, renames and diagram layout do not count.
+  meaning, formatting, typo fixes, renames and diagram layout do not count. That includes a
+  diagram the student edited in Camunda themselves: moving, resizing or recoloring shapes, or
+  saving it again, changes only the layout.
 - **It came from something the student saw or was told:** a run on an input, or design critique.
   A change you made on your own while building does not count.
 
 When you are not sure, do not offer. Asking after every small edit teaches the student to answer
-no without reading, and `find-changes` lists every commit to the diagram or a skill, so a change
-you pass over can still be recorded later.
+no without reading, and `find-changes` lists every commit that changed the diagram's steps or
+a skill, so a change you pass over can still be recorded later.
 
 Whether to offer is your call. Whether the change goes in the record, who noticed the problem
 and who chose the fix are the student's: `record-change` asks them, and you never decide those

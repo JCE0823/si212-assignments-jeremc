@@ -79,7 +79,7 @@ record can count.
 ## The change record
 
 `ps5/CHANGES.md` records changes made after your initial design, prompted by running the workflow
-on real data or by design critique from classmates or Paul. Two kinds count:
+on real data or by design critique from classmates or the instructor. Two kinds count:
 
 - **a change to the workflow**, which shows up as a change to the diagram
 - **a change to what a skill file says**

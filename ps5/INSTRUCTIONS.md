@@ -4,11 +4,11 @@
 
 **Design and build a workflow you would actually use, with an AI agent doing at least one of its
 steps.** It runs on your own laptop, on data you can reach from there. Some steps will be done by
-a program, some by an agent following a skill file you write, and some by you. Then you run it
+a program, some by an agent following a skill file you write, and some by you. Then you will run it
 on real inputs, notice where it goes wrong, and change the design or the skills because of what
 you noticed.
 
-This is the course's central skill: dividing a workflow into steps, and deciding whether each one
+This is the course's central learning objective: dividing a workflow into steps, and deciding whether each one
 is best done by a program, an agent or a person. Your agent will do most of the building. You are
 responsible for the design, for judging the outputs, and for deciding what to change.
 
@@ -18,7 +18,7 @@ noticed or guided, so it is a record of your judgment, not of your agent's.
 ## Choosing your workflow
 
 **The default is a tracker that helps you pick internship and job postings you want to respond
-to.** If you don't arrive with a workflow of your own, use this one. It has three phases, and
+to.** If you don't think of a better one, use this one. It has three phases, and
 each one can go wrong in its own way:
 
 - **Acquire** postings, by hand or with automation you build.
@@ -27,8 +27,7 @@ each one can go wrong in its own way:
   apply.
 
 **Get postings from sources that allow it**: Handshake, company career pages, or pages you save
-by hand. LinkedIn's terms forbid scraping, and pointing a browser automation tool at it puts your
-account at risk.
+by hand. A site's terms of use may forbid scraping (LinkedIn's do, for example). If so, pointing a browser automation tool at it could put your account at risk. But you may be able to create a browser extension that captures the page you are looking at, so that you search by hand and the extension saves what you find.
 
 **A workflow of your own is welcome if it passes three tests:**
 
@@ -38,14 +37,20 @@ account at risk.
 3. **You have at least ten real inputs to run it on.** And it has to be small enough to build and
    run in about a week.
 
-You do not need approval. If you are unsure whether yours passes, bring it to class on Tuesday
-11/10 and ask your table.
+You do not need approval. If you are unsure whether yours passes, bring it to class and ask your table or the instructor.
+
+A few ideas for other workflows:
+
+- process something from your Google calendar entries
+- process something from Canvas (check under Account > Settings to see whether Canvas lets you add an access token that you could use to access your content through the Canvas API)
+- organize your photos
+- do qualitative coding of free-text responses, such as UX interview transcripts
 
 ## Designing it
 
 **Design with Superpowers.** Tell your agent you want to design a workflow for Problem Set 5, and
-it will brainstorm it with you into a spec. Your agent draws `ps5/workflow.bpmn` as you go, and
-you view it by double-clicking it to open it in Camunda. The diagram shows each step, who does it
+it will brainstorm it with you into a spec. As part of that process, your agent will draw `ps5/workflow.bpmn` as you go, and
+you can view it by double-clicking it to open it in Camunda. The diagram will show each step, who does it
 (you, an AI agent following a skill file, or a program), what triggers the workflow, and where
 its state is kept.
 
@@ -62,13 +67,13 @@ record can count.
 ## Building and running it
 
 - **Skills go in `ps5/skills/<name>/SKILL.md`**, one folder per skill. The skill can be run by
-  hand, by asking your agent to follow it, or called from a program. Either is fine, and your
+  hand, by asking your agent to follow it, or called from a program. Any of these is fine, and your
   diagram says which.
 - **Save every run's evidence in `ps5/examples/`**: one folder per input, holding the input as
   `input.<ext>` and what the workflow produced from it as `output.<ext>`. Commit them as the runs
   happen. You need at least ten.
 - **Use real data.** If an input has someone's personal details in it, replace them with made-up
-  ones before you commit it. Postings are fine as they are.
+  ones before you commit it. Public postings are fine as they are.
 - **Fill in `ps5/README.md`**: what the workflow does, how to run it, and where its data lives.
 
 ## The change record
@@ -91,40 +96,39 @@ while you only approved it.
 | your agent              | your agent, with you approving                   | no             |
 
 **Your agent will offer you an entry after each change** to the diagram or a skill once your
-initial design is named, because `ps5/AGENTS.md` tells it to. It asks you who noticed the problem
+initial design is named, because `ps5/AGENTS.md` tells it to. It will ask you who noticed the problem
 and who chose the fix; it does not decide that for you. If it lands on the table's last row, no
-entry is made.
+entry will be made.
 
 **Two parts of each entry are in your own words:** what you noticed was wrong, and why you chose
-that fix. Your agent asks you for each one, and a tool copies your answer into the record exactly
+that fix. Your agent will ask you for each one, and a tool will copy your answer into the record exactly
 as you typed it. Be specific: name the input or the critique that prompted it, and what was
 wrong. "I improved the prompt" is not specific.
 
 **If you made changes without recording them**, ask your agent to **find changes for your
-record**. It lists the commits since your initial design that changed the diagram or a skill and
-are not in the record yet, and asks which ones you want to add.
+record**. It will list the commits since your initial design that changed the diagram or a skill and
+are not in the record yet, and ask which ones you want to add.
 
 ## Check it yourself before you hand it in
 
-**Ask your agent whether Problem Set 5 is ready to submit.** It checks everything below that a
-program can check, including that your work is committed and pushed, then shows you each
-own-words part of your record in turn and asks whether you wrote it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
+**Ask your agent whether Problem Set 5 is ready to submit.** It will check everything below that a
+program can check, including that your work is committed and pushed, then show you each
+own-words part of your record in turn and ask whether you wrote it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
 your own words, and it will ask you again.
 
-Also check, yourself, that the diagram matches what you built: every step, who does it, and the
-trigger.
+Also check, yourself, that the diagram matches what you built.
 
 ## The demo
 
-**Bring your workflow to Thursday 11/19's class.** At your table, a classmate or Paul picks one
+**Bring your workflow to Thursday 11/19's class.** At your table, a classmate will pick one
 entry in your change record, or one difference between your initial design and your final one.
-You walk through it: the input or critique that showed the problem, what you changed, and what
+You will walk through it: the input or critique that showed the problem, what you changed, and what
 happened next.
 
 ## The quiz
 
 **A mini-quiz after the due date will ask you about your own change record**, without an agent:
-what went wrong in one of your changes, and what you changed. It is graded against the record you
+what went wrong in one of your changes, and what you changed. It will be graded against the record you
 submitted, so the own-words parts need to be accurate.
 
 ## What you hand in
@@ -153,14 +157,13 @@ submitted, so the own-words parts need to be accurate.
 are written, and code quality. "Specific" is the only bar on the own-words parts.
 
 **When you made your initial design commit is not graded**, only that `CHANGES.md` names one.
-But a design frozen late leaves you less time to make changes worth recording.
+But a design frozen late will leave you less time to make changes worth recording. Do it before class on Thursday 11/12 so that your table can offer a critique.
 
 **The demo and the quiz question are graded separately**, and do not count toward this problem
 set.
 
 ## Submitting
 
-Commit as you go, and push. On Canvas, submit the URL of your assignments repository. What gets
-graded is whatever is on `main` when it gets graded.
+Commit as you go. Push to GitHub before you submit on Canvas. On Canvas, submit the URL of your assignments repository. The grader will grade whatever is on `main` when it runs.
 
 Due **Wed Nov 18, 11:59 PM**.

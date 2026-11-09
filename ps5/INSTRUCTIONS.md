@@ -3,7 +3,7 @@
 ## What you are doing
 
 **Design and build a workflow you would actually use, with an AI agent doing at least one of its
-steps.** It runs on your own laptop, on data you can reach from there. Some steps will be done by
+steps.** It will run on your own laptop, on data you can reach from there. Some steps will be done by
 a program, some by an agent following a skill file you write, and some by you. Then you will run it
 on real inputs, notice where it goes wrong, and change the design or the skills because of what
 you noticed.
@@ -61,7 +61,7 @@ class we will critique each other's designs.
 **Name your initial design on the first line of `ps5/CHANGES.md`.** When you consider the design
 frozen, find that commit's hash (`git log --oneline` shows it, or ask your agent), and replace
 the placeholder so the line reads `Initial design: <that hash>`. A commit cannot contain its own
-hash, so this line goes in a later commit. Every change after the named commit is a change your
+hash, so this line will go in a later commit. Every change after the named commit is a change your
 record can count.
 
 ## Building and running it
@@ -95,8 +95,10 @@ while you only approved it.
 | your agent              | you, choosing among its options or redirecting it | yes           |
 | your agent              | your agent, with you approving                   | no             |
 
-**Your agent will offer you an entry after each change** to the diagram or a skill once your
-initial design is named, because `ps5/AGENTS.md` tells it to. It will ask you who noticed the problem
+**Your agent will offer you an entry after a change worth recording**, once your initial design
+is named, because `ps5/AGENTS.md` tells it to: a change to what a step does or who does it, or
+to what a skill tells the agent, prompted by a run or by critique. It will not ask after a
+rewording or a layout fix. It will ask you who noticed the problem
 and who chose the fix; it does not decide that for you. If it lands on the table's last row, no
 entry will be made.
 

@@ -104,8 +104,8 @@ entry will be made.
 
 **Two parts of each entry are in your own words:** what was wrong, and why that fix,
 whoever noticed the problem or chose the fix. Your agent will ask you for each one, and a tool will copy your answer into the record exactly
-as you typed it. Be specific: name the input or the critique that prompted it, and what was
-wrong. "I improved the prompt" is not specific.
+as you typed it. Be concrete about the problem: say what the workflow got wrong. "It only
+extracted one deadline when there were two" is concrete. "I improved the prompt" is not.
 
 **If you made changes without recording them**, ask your agent to **find changes for your
 record**. It will list the commits since your initial design that changed the diagram or a skill and
@@ -117,7 +117,8 @@ to add.
 **Ask your agent whether Problem Set 5 is ready to submit.** It will check everything below that a
 program can check, including that your work is committed and pushed. Then it will show you
 each own-words part of your record and ask whether you wrote it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
-your own words, and it will ask you again.
+your own words, and it will ask you again. It will also warn you about any own-words part that
+might lose credit, and why. Whether to change it is up to you.
 
 Also check, yourself, that the diagram matches what you built.
 
@@ -154,10 +155,10 @@ submitted, so the own-words parts need to be accurate.
 | an agent step follows a skill file in `ps5/`, and at least one step is done by a program or by you | 10% |
 | at least ten real inputs, each saved with the output the workflow produced from it                  | 20% |
 | at least two entries in `CHANGES.md` that qualify: each touches the diagram or a skill file, checked against its commit, and is not on the table's last row | 20% |
-| each entry's own-words parts are specific, naming the input or critique that prompted it and what was wrong, and are attested | 20% |
+| each entry's own-words parts say concretely what was wrong and why that fix, and are attested | 20% |
 
 **Not graded:** whether the workflow is clever or a skill is good, how well the own-words parts
-are written, and code quality. "Specific" is the only bar on the own-words parts.
+are written, and code quality. "Concrete" is the only bar on the own-words parts.
 
 **When you made your initial design commit is not graded**, only that `CHANGES.md` names one.
 But a design frozen late will leave you less time to make changes worth recording. Do it before class on Thursday 11/12 so that your table can offer a critique.

@@ -91,7 +91,7 @@ while you only approved it.
 | ----------------------- | ------------------------------------------------ | -------------- |
 | you                     | you                                              | yes            |
 | you                     | your agent, from your description                | yes            |
-| a classmate or Paul, in design critique | you                              | yes            |
+| a classmate or instructor, in design critique | you                              | yes            |
 | your agent              | you, choosing among its options or redirecting it | yes           |
 | your agent              | your agent, with you approving                   | no             |
 
@@ -102,8 +102,8 @@ rewording or a layout fix. It will ask you who noticed the problem
 and who chose the fix; it does not decide that for you. If it lands on the table's last row, no
 entry will be made.
 
-**Two parts of each entry are in your own words:** what you noticed was wrong, and why you chose
-that fix. Your agent will ask you for each one, and a tool will copy your answer into the record exactly
+**Two parts of each entry are in your own words:** what was wrong, and why that fix,
+whoever noticed the problem or chose the fix. Your agent will ask you for each one, and a tool will copy your answer into the record exactly
 as you typed it. Be specific: name the input or the critique that prompted it, and what was
 wrong. "I improved the prompt" is not specific.
 

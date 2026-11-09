@@ -109,13 +109,14 @@ wrong. "I improved the prompt" is not specific.
 
 **If you made changes without recording them**, ask your agent to **find changes for your
 record**. It will list the commits since your initial design that changed the diagram or a skill and
-are not in the record yet, and ask which ones you want to add.
+are not in the record yet, leaving out rewording and layout changes, and ask which ones you want
+to add.
 
 ## Check it yourself before you hand it in
 
 **Ask your agent whether Problem Set 5 is ready to submit.** It will check everything below that a
-program can check, including that your work is committed and pushed, then show you each
-own-words part of your record in turn and ask whether you wrote it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
+program can check, including that your work is committed and pushed. Then it will show you
+each own-words part of your record and ask whether you wrote it yourself. A yes is recorded in `CHANGES.md` with the date. If you say no, rewrite that part in
 your own words, and it will ask you again.
 
 Also check, yourself, that the diagram matches what you built.

@@ -28,6 +28,8 @@ Handing something in means committing it here and pushing.
   public internet, with sign-in. Start with its `INSTRUCTIONS.md`.
 - [`ps4`](ps4/INSTRUCTIONS.md): Problem Set 4, Simulation. A simulation of your own question, run
   from a web page. Start with its `INSTRUCTIONS.md`.
+- [`ps5`](ps5/INSTRUCTIONS.md): Problem Set 5, Putting an Agent in a Workflow. A workflow you
+  would use, with an agent doing one of its steps. Start with its `INSTRUCTIONS.md`.
 
 The rest arrive the same way, each as a folder, before they are due.
 

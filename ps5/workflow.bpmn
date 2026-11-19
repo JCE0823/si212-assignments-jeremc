@@ -23,14 +23,16 @@
     <bpmn:startEvent id="posting_selected" name="Posting selected">
       <bpmn:outgoing>to_save_posting</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="save_posting" name="Save posting">
+    <bpmn:userTask id="save_posting" name="Save posting&#10;README.md">
+      <bpmn:documentation>ps5/README.md</bpmn:documentation>
       <bpmn:incoming>to_save_posting</bpmn:incoming>
       <bpmn:outgoing>to_assess_posting</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="save_writes_evidence">
         <bpmn:targetRef>evidence_capture</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:userTask>
-    <bpmn:serviceTask id="assess_posting" name="Assess posting">
+    <bpmn:serviceTask id="assess_posting" name="Assess posting&#10;assess-posting.md">
+      <bpmn:documentation>ps5/skills/assess-posting/SKILL.md</bpmn:documentation>
       <bpmn:incoming>to_assess_posting</bpmn:incoming>
       <bpmn:outgoing>to_validate_save_review</bpmn:outgoing>
       <bpmn:property id="assess_input" name="__targetRef_placeholder" />
@@ -46,7 +48,8 @@
         <bpmn:targetRef>evidence_capture</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
-    <bpmn:scriptTask id="validate_save_review" name="Validate and save review">
+    <bpmn:scriptTask id="validate_save_review" name="Validate and save review&#10;tracker.mjs">
+      <bpmn:documentation>ps5/tracker.mjs</bpmn:documentation>
       <bpmn:incoming>to_validate_save_review</bpmn:incoming>
       <bpmn:outgoing>to_review_accepted</bpmn:outgoing>
       <bpmn:property id="validate_input" name="__targetRef_placeholder" />
@@ -70,7 +73,8 @@
       <bpmn:outgoing>accepted_yes</bpmn:outgoing>
       <bpmn:outgoing>accepted_no</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="review_recommendation" name="Review recommendation">
+    <bpmn:userTask id="review_recommendation" name="Review recommendation&#10;README.md">
+      <bpmn:documentation>ps5/README.md</bpmn:documentation>
       <bpmn:incoming>accepted_yes</bpmn:incoming>
       <bpmn:outgoing>to_recommendation_reviewed</bpmn:outgoing>
       <bpmn:property id="human_input" name="__targetRef_placeholder" />
@@ -92,7 +96,9 @@
     <bpmn:dataStoreReference id="evidence_capture" name="Evidence (examples folder)" />
     <bpmn:dataStoreReference id="evidence_output" name="Evidence (examples folder)" />
     <bpmn:dataStoreReference id="criteria_store" name="Criteria (criteria.json)" />
-    <bpmn:dataStoreReference id="shortlist_store" name="Shortlist (data/shortlist.md)" />
+    <bpmn:dataStoreReference id="shortlist_store" name="Shortlist (shortlist.md)">
+      <bpmn:documentation>ps5/data/shortlist.md</bpmn:documentation>
+    </bpmn:dataStoreReference>
     <bpmn:sequenceFlow id="to_save_posting" sourceRef="posting_selected" targetRef="save_posting" />
     <bpmn:sequenceFlow id="to_assess_posting" sourceRef="save_posting" targetRef="assess_posting" />
     <bpmn:sequenceFlow id="to_validate_save_review" sourceRef="assess_posting" targetRef="validate_save_review" />

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="collaboration">
+    <bpmn:participant id="workflow" name="Local internship tracker" processRef="workflow_process" />
+  </bpmn:collaboration>
+  <bpmn:process id="workflow_process" isExecutable="false">
+    <bpmn:laneSet id="lanes">
+      <bpmn:lane id="lane_human" name="HUMAN operator">
+        <bpmn:flowNodeRef>posting_selected</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>save_posting</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>review_recommendation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>recommendation_reviewed</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="lane_agent" name="AI AGENT">
+        <bpmn:flowNodeRef>assess_posting</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="lane_program" name="PROGRAM">
+        <bpmn:flowNodeRef>validate_save_review</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>review_accepted</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>review_rejected</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="posting_selected" name="Posting selected">
+      <bpmn:outgoing>to_save_posting</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="save_posting" name="Save posting">
+      <bpmn:incoming>to_save_posting</bpmn:incoming>
+      <bpmn:outgoing>to_assess_posting</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="save_writes_evidence">
+        <bpmn:targetRef>evidence_capture</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="assess_posting" name="Assess posting">
+      <bpmn:incoming>to_assess_posting</bpmn:incoming>
+      <bpmn:outgoing>to_validate_save_review</bpmn:outgoing>
+      <bpmn:property id="assess_input" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="assess_reads_evidence">
+        <bpmn:sourceRef>evidence_capture</bpmn:sourceRef>
+        <bpmn:targetRef>assess_input</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="assess_reads_criteria">
+        <bpmn:sourceRef>criteria_store</bpmn:sourceRef>
+        <bpmn:targetRef>assess_input</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="assess_writes_evidence">
+        <bpmn:targetRef>evidence_capture</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:serviceTask>
+    <bpmn:scriptTask id="validate_save_review" name="Validate and save review">
+      <bpmn:incoming>to_validate_save_review</bpmn:incoming>
+      <bpmn:outgoing>to_review_accepted</bpmn:outgoing>
+      <bpmn:property id="validate_input" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="validate_reads_evidence">
+        <bpmn:sourceRef>evidence_output</bpmn:sourceRef>
+        <bpmn:targetRef>validate_input</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="validate_reads_criteria">
+        <bpmn:sourceRef>criteria_store</bpmn:sourceRef>
+        <bpmn:targetRef>validate_input</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="validate_writes_evidence">
+        <bpmn:targetRef>evidence_output</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="validate_writes_shortlist">
+        <bpmn:targetRef>shortlist_store</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="review_accepted" name="Review accepted?">
+      <bpmn:incoming>to_review_accepted</bpmn:incoming>
+      <bpmn:outgoing>accepted_yes</bpmn:outgoing>
+      <bpmn:outgoing>accepted_no</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="review_recommendation" name="Review recommendation">
+      <bpmn:incoming>accepted_yes</bpmn:incoming>
+      <bpmn:outgoing>to_recommendation_reviewed</bpmn:outgoing>
+      <bpmn:property id="human_input" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="human_reads_evidence">
+        <bpmn:sourceRef>evidence_output</bpmn:sourceRef>
+        <bpmn:targetRef>human_input</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="human_reads_shortlist">
+        <bpmn:sourceRef>shortlist_store</bpmn:sourceRef>
+        <bpmn:targetRef>human_input</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:endEvent id="recommendation_reviewed" name="Recommendation reviewed">
+      <bpmn:incoming>to_recommendation_reviewed</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="review_rejected" name="Review rejected">
+      <bpmn:incoming>accepted_no</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:dataStoreReference id="evidence_capture" name="Evidence (examples folder)" />
+    <bpmn:dataStoreReference id="evidence_output" name="Evidence (examples folder)" />
+    <bpmn:dataStoreReference id="criteria_store" name="Criteria (criteria.json)" />
+    <bpmn:dataStoreReference id="shortlist_store" name="Shortlist (data/shortlist.md)" />
+    <bpmn:sequenceFlow id="to_save_posting" sourceRef="posting_selected" targetRef="save_posting" />
+    <bpmn:sequenceFlow id="to_assess_posting" sourceRef="save_posting" targetRef="assess_posting" />
+    <bpmn:sequenceFlow id="to_validate_save_review" sourceRef="assess_posting" targetRef="validate_save_review" />
+    <bpmn:sequenceFlow id="to_review_accepted" sourceRef="validate_save_review" targetRef="review_accepted" />
+    <bpmn:sequenceFlow id="accepted_yes" name="yes" sourceRef="review_accepted" targetRef="review_recommendation" />
+    <bpmn:sequenceFlow id="accepted_no" name="no" sourceRef="review_accepted" targetRef="review_rejected" />
+    <bpmn:sequenceFlow id="to_recommendation_reviewed" sourceRef="review_recommendation" targetRef="recommendation_reviewed" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="diagram">
+    <bpmndi:BPMNPlane id="plane" bpmnElement="collaboration">
+      <bpmndi:BPMNShape id="workflow_di" bpmnElement="workflow" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1042" height="630" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="posting_selected_di" bpmnElement="posting_selected">
+        <dc:Bounds x="240" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="save_posting_di" bpmnElement="save_posting">
+        <dc:Bounds x="326" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="assess_posting_di" bpmnElement="assess_posting">
+        <dc:Bounds x="506" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="validate_save_review_di" bpmnElement="validate_save_review">
+        <dc:Bounds x="686" y="530" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="review_accepted_di" bpmnElement="review_accepted">
+        <dc:Bounds x="836" y="545" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="756" y="522" width="90" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="review_recommendation_di" bpmnElement="review_recommendation">
+        <dc:Bounds x="966" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="recommendation_reviewed_di" bpmnElement="recommendation_reviewed">
+        <dc:Bounds x="1116" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="review_rejected_di" bpmnElement="review_rejected">
+        <dc:Bounds x="936" y="552" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="evidence_capture_di" bpmnElement="evidence_capture">
+        <dc:Bounds x="351" y="215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="evidence_output_di" bpmnElement="evidence_output">
+        <dc:Bounds x="711" y="635" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="criteria_store_di" bpmnElement="criteria_store">
+        <dc:Bounds x="531" y="425" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shortlist_store_di" bpmnElement="shortlist_store">
+        <dc:Bounds x="781" y="635" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="lane_human_di" bpmnElement="lane_human" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1012" height="210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="lane_agent_di" bpmnElement="lane_agent" isHorizontal="true">
+        <dc:Bounds x="190" y="290" width="1012" height="210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="lane_program_di" bpmnElement="lane_program" isHorizontal="true">
+        <dc:Bounds x="190" y="500" width="1012" height="210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="to_save_posting_di" bpmnElement="to_save_posting">
+        <di:waypoint x="276" y="150" />
+        <di:waypoint x="326" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="to_assess_posting_di" bpmnElement="to_assess_posting">
+        <di:waypoint x="426" y="150" />
+        <di:waypoint x="466" y="150" />
+        <di:waypoint x="466" y="360" />
+        <di:waypoint x="506" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="to_validate_save_review_di" bpmnElement="to_validate_save_review">
+        <di:waypoint x="606" y="360" />
+        <di:waypoint x="646" y="360" />
+        <di:waypoint x="646" y="570" />
+        <di:waypoint x="686" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="to_review_accepted_di" bpmnElement="to_review_accepted">
+        <di:waypoint x="786" y="570" />
+        <di:waypoint x="836" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="accepted_yes_di" bpmnElement="accepted_yes">
+        <di:waypoint x="861" y="545" />
+        <di:waypoint x="861" y="150" />
+        <di:waypoint x="966" y="150" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="867" y="527" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="accepted_no_di" bpmnElement="accepted_no">
+        <di:waypoint x="886" y="570" />
+        <di:waypoint x="936" y="570" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="892" y="552" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="to_recommendation_reviewed_di" bpmnElement="to_recommendation_reviewed">
+        <di:waypoint x="1066" y="150" />
+        <di:waypoint x="1116" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="save_writes_evidence_di" bpmnElement="save_writes_evidence">
+        <di:waypoint x="376" y="190" />
+        <di:waypoint x="376" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="assess_writes_evidence_di" bpmnElement="assess_writes_evidence">
+        <di:waypoint x="506" y="360" />
+        <di:waypoint x="401" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="assess_reads_evidence_di" bpmnElement="assess_reads_evidence">
+        <di:waypoint x="401" y="240" />
+        <di:waypoint x="506" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="assess_reads_criteria_di" bpmnElement="assess_reads_criteria">
+        <di:waypoint x="556" y="425" />
+        <di:waypoint x="556" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="validate_writes_evidence_di" bpmnElement="validate_writes_evidence">
+        <di:waypoint x="736" y="610" />
+        <di:waypoint x="736" y="635" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="validate_writes_shortlist_di" bpmnElement="validate_writes_shortlist">
+        <di:waypoint x="736" y="610" />
+        <di:waypoint x="806" y="635" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="validate_reads_evidence_di" bpmnElement="validate_reads_evidence">
+        <di:waypoint x="736" y="635" />
+        <di:waypoint x="736" y="610" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="validate_reads_criteria_di" bpmnElement="validate_reads_criteria">
+        <di:waypoint x="581" y="450" />
+        <di:waypoint x="686" y="570" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="human_reads_evidence_di" bpmnElement="human_reads_evidence">
+        <di:waypoint x="736" y="635" />
+        <di:waypoint x="1016" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="human_reads_shortlist_di" bpmnElement="human_reads_shortlist">
+        <di:waypoint x="806" y="635" />
+        <di:waypoint x="1016" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

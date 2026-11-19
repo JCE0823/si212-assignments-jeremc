@@ -105,9 +105,9 @@ draft, fix the reported problem, and rerun `node ps5/tracker.mjs report`.
 - `ps5/workflow.bpmn` shows who does each step and which files they use.
 
 The initial design (diagram, skill and spec) is in commit
-`f4dcfb87e53db25f40ee84953ceb405b0e9b83ba`. Setting that hash in
-`ps5/CHANGES.md` is still pending. The installed `changes.mjs` tool has no
-initializer, and the course instructions reserve direct edits for the
-student. Requested revisions are being saved as separate commits and new
-example IDs. The change record still needs attribution, writeups in the
-student's own words and attestation before submission.
+`f4dcfb87e53db25f40ee84953ceb405b0e9b83ba`, named in `ps5/CHANGES.md`.
+The change record contains the two requested behavioral revisions, the
+student's explanations and confirmed authorship of all four passages.
+The before/after assessments preserve the original examples.
+Before submitting on Canvas, ensure these commits are on GitHub main and
+submit the assignments repository URL.

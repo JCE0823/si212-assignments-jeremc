@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 2. Captures awaiting a saved review: 8.
+Saved reviews: 3. Captures awaiting a saved review: 7.
 
-Pending capture IDs: amazon-sde-india, amazon-sde-us, amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: amazon-sde-us, amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -67,3 +67,31 @@ Unknowns
 - No application closing date was captured. The summer period does not establish exact start or end dates for the placement.
 - Confirm the role is available and check the complete requirements and any work authorization rules in light of the sponsorship restriction.
 - The capture lists Tableau, Power Query and stronger Excel skills as preferred.
+
+## Amazon — Software Development Engineer Intern - May 2027 &#40;2 month&#41;
+
+ID: amazon-sde-india
+
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition>) (partial capture, 2026-11-18)
+
+Verdict is explore. Eligibility is unverified. Human review is pending.
+
+Rationale: Software implementation and code review fit the software interest. The Bengaluru posting summary preserves conflicting durations and degree descriptions that need employer clarification.
+
+Requirements
+
+- The body targets 2027 graduates aged at least 18 with programming and data structures experience. (evidence: The body targets 2027 graduates aged at least 18, with programming and data-structure experience.)
+- The body describes enrolled or completed computing or STEM degrees. A separate qualifications section specifies a computing-related bachelor&#39;s degree or above. (evidence: It describes enrolled or completed computing/STEM degrees, while a separate qualifications section states a computing-related bachelor&#39;s degree or above.)
+
+Dates
+
+- `program_start` — May 2027 (evidence: The title describes a May 2027 start)
+- `graduation_window` — 2027 (evidence: The body targets 2027 graduates)
+
+Missing from the extraction: application deadline.
+
+Unknowns
+
+- The partial summary provides no application closing date and does not establish current availability.
+- The title says two months and the body says 22-24 weeks. The actual duration and end date remain unresolved.
+- Confirm the degree level, discipline and enrollment or completion status accepted by the employer, as well as local work authorization and sponsorship requirements.

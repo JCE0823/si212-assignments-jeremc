@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "amazon-sde-india",
+  "title": "Software Development Engineer Intern - May 2027 (2 month)",
+  "company": "Amazon",
+  "source_url": "https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition",
+  "captured_on": "2026-11-18",
+  "input_sha256": "e90853f62b04973db47854f2448f81588c823f3c1c6b96a215e9da516080e851",
+  "criteria_sha256": "1dce773b24ec1dc9f9b16d68fa4833063b9f63d0ba9f6e4096383ef41dd5d002",
+  "processed_at": "2026-11-19T04:58:47.184Z",
+  "human_review": "pending",
+  "review": {
+    "schema_version": 1,
+    "verdict": "explore",
+    "eligibility": "unverified",
+    "rationale": "Software implementation and code review fit the software interest. The Bengaluru posting summary preserves conflicting durations and degree descriptions that need employer clarification.",
+    "requirements": [
+      {
+        "text": "The body targets 2027 graduates aged at least 18 with programming and data structures experience.",
+        "evidence": "The body targets 2027 graduates aged at least 18, with programming and data-structure experience."
+      },
+      {
+        "text": "The body describes enrolled or completed computing or STEM degrees. A separate qualifications section specifies a computing-related bachelor's degree or above.",
+        "evidence": "It describes enrolled or completed computing/STEM degrees, while a separate qualifications section states a computing-related bachelor's degree or above."
+      }
+    ],
+    "dates": [
+      {
+        "kind": "program_start",
+        "value": "May 2027",
+        "evidence": "The title describes a May 2027 start"
+      },
+      {
+        "kind": "graduation_window",
+        "value": "2027",
+        "evidence": "The body targets 2027 graduates"
+      }
+    ],
+    "missing_fields": [
+      "application_deadline"
+    ],
+    "unknowns": [
+      "The partial summary provides no application closing date and does not establish current availability.",
+      "The title says two months and the body says 22-24 weeks. The actual duration and end date remain unresolved.",
+      "Confirm the degree level, discipline and enrollment or completion status accepted by the employer, as well as local work authorization and sponsorship requirements."
+    ],
+    "apply_url": "https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition"
+  }
+}

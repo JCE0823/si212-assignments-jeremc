@@ -18,7 +18,7 @@ when a posting is selected.
    Open the original source to check whether it is still available, confirm
    application dates and requirements, and make your own decision about applying.
 
-The ten examples summarize real public posting sources, including historical
+The [ten examples](examples/INDEX.md) summarize real public posting sources, including historical
 previews where identified. Each capture is partial, and each recommendation is
 unverified and awaits human review. An `explore` verdict means the subject of the
 internship is worth investigating.

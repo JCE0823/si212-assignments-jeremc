@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "amazon-aws-database",
+  "title": "Software Development Engineer Intern, AWS Database - 2027 (US)",
+  "company": "Amazon",
+  "source_url": "https://www.amazon.jobs/en/jobs/10565667/software-development-engineer-intern-aws-database-2027-us",
+  "captured_on": "2026-11-18",
+  "input_sha256": "676a14fce7ea340715c91556ff81b629cf82bc6160360266d719e8c38ed9a3a4",
+  "criteria_sha256": "1dce773b24ec1dc9f9b16d68fa4833063b9f63d0ba9f6e4096383ef41dd5d002",
+  "processed_at": "2026-11-19T04:58:18.798Z",
+  "human_review": "pending",
+  "review": {
+    "schema_version": 1,
+    "verdict": "explore",
+    "eligibility": "unverified",
+    "rationale": "Database engineering, data management and distributed systems fit the software and data interests. The main placement described is in person, so confirm the site and timing before considering an application.",
+    "requirements": [
+      {
+        "text": "At least 18 years old and enrolled in a relevant STEM degree at bachelor's level or above.",
+        "evidence": "Applicants must be 18 or older, enrolled in a relevant STEM degree at bachelor's level or above"
+      },
+      {
+        "text": "Coding, data structures and AI-assisted development experience.",
+        "evidence": "with coding, data-structure and AI-assisted development experience"
+      },
+      {
+        "text": "Expected graduation in the listed window, with studies remaining after the placement.",
+        "evidence": "Expected graduation: October 2027 through September 2029, with studies remaining afterward."
+      },
+      {
+        "text": "Available for the main summer placement in person for 12 weeks.",
+        "evidence": "The main summer placement is 12 weeks in person"
+      }
+    ],
+    "dates": [
+      {
+        "kind": "program_start",
+        "value": "May/June 2027",
+        "evidence": "beginning May/June 2027"
+      },
+      {
+        "kind": "program_end",
+        "value": "August/September 2027",
+        "evidence": "ending August/September 2027"
+      },
+      {
+        "kind": "graduation_window",
+        "value": "October 2027 through September 2029",
+        "evidence": "Expected graduation: October 2027 through September 2029"
+      }
+    ],
+    "missing_fields": [
+      "application_deadline"
+    ],
+    "unknowns": [
+      "The partial summary does not establish an application deadline or current availability.",
+      "Confirm the assigned site, exact summer dates and whether other-season placements are available.",
+      "Work authorization, sponsorship and any qualifications omitted from the partial summary need checking."
+    ],
+    "apply_url": "https://www.amazon.jobs/en/jobs/10565667/software-development-engineer-intern-aws-database-2027-us"
+  }
+}

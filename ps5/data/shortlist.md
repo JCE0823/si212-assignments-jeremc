@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 1. Captures awaiting a saved review: 9.
+Saved reviews: 2. Captures awaiting a saved review: 8.
 
-Pending capture IDs: amazon-business-analyst, amazon-sde-india, amazon-sde-us, amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: amazon-sde-india, amazon-sde-us, amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -36,3 +36,34 @@ Unknowns
 - The partial summary does not establish an application deadline or current availability.
 - Confirm the assigned site, exact summer dates and whether other-season placements are available.
 - Work authorization, sponsorship and any qualifications omitted from the partial summary need checking.
+
+## Amazon — Business Analyst Intern - Summer 2027
+
+ID: amazon-business-analyst
+
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10575250/business-analyst-intern-summer-2027>) (partial capture, 2026-11-18)
+
+Verdict is explore. Eligibility is unverified. Human review is pending.
+
+Rationale: Business data analysis and report design fit the data interest. The posting summary states a nationwide relocation requirement and explicitly rules out visa sponsorship.
+
+Requirements
+
+- SQL knowledge, age 18 or above and current bachelor&#39;s enrollment. (evidence: Mandatory qualifications include SQL knowledge, age 18 or above, current bachelor&#39;s enrollment)
+- Graduate in the stated window and be willing to relocate nationwide. (evidence: graduation between December 2027 and June 2028, and willingness to relocate nationwide.)
+- Work 40 hours per week for 12 weeks during the summer period. (evidence: It requires 40 hours weekly for 12 weeks during the May through September summer period.)
+- Visa sponsorship is unavailable. (evidence: Visa sponsorship is unavailable.)
+
+Dates
+
+- `graduation_window` — December 2027 and June 2028 (evidence: graduation between December 2027 and June 2028)
+- `other` — May through September (evidence: during the May through September summer period)
+- `other` — summer 2027 (evidence: The title identifies summer 2027)
+
+Missing from the extraction: application deadline.
+
+Unknowns
+
+- No application closing date was captured. The summer period does not establish exact start or end dates for the placement.
+- Confirm the role is available and check the complete requirements and any work authorization rules in light of the sponsorship restriction.
+- The capture lists Tableau, Power Query and stronger Excel skills as preferred.

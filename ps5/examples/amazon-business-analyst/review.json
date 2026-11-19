@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "verdict": "explore",
+  "eligibility": "unverified",
+  "rationale": "Business data analysis and report design fit the data interest. The posting summary states a nationwide relocation requirement and explicitly rules out visa sponsorship.",
+  "requirements": [
+    {
+      "text": "SQL knowledge, age 18 or above and current bachelor's enrollment.",
+      "evidence": "Mandatory qualifications include SQL knowledge, age 18 or above, current bachelor's enrollment"
+    },
+    {
+      "text": "Graduate in the stated window and be willing to relocate nationwide.",
+      "evidence": "graduation between December 2027 and June 2028, and willingness to relocate nationwide."
+    },
+    {
+      "text": "Work 40 hours per week for 12 weeks during the summer period.",
+      "evidence": "It requires 40 hours weekly for 12 weeks during the May through September summer period."
+    },
+    {
+      "text": "Visa sponsorship is unavailable.",
+      "evidence": "Visa sponsorship is unavailable."
+    }
+  ],
+  "dates": [
+    {
+      "kind": "graduation_window",
+      "value": "December 2027 and June 2028",
+      "evidence": "graduation between December 2027 and June 2028"
+    },
+    {
+      "kind": "other",
+      "value": "May through September",
+      "evidence": "during the May through September summer period"
+    },
+    {
+      "kind": "other",
+      "value": "summer 2027",
+      "evidence": "The title identifies summer 2027"
+    }
+  ],
+  "missing_fields": [
+    "application_deadline"
+  ],
+  "unknowns": [
+    "No application closing date was captured. The summer period does not establish exact start or end dates for the placement.",
+    "Confirm the role is available and check the complete requirements and any work authorization rules in light of the sponsorship restriction.",
+    "The capture lists Tableau, Power Query and stronger Excel skills as preferred."
+  ],
+  "apply_url": "https://www.amazon.jobs/en/jobs/10575250/business-analyst-intern-summer-2027"
+}

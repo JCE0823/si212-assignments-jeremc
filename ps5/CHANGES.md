@@ -17,4 +17,3 @@ the tracker mark Amazon intern as explore even though it reqires master or highe
 ### Why this fix (my own words)
 
 bc it is more percise so that ppl with bachloer's only wont have job appication with master only
-what is the method we use

@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 5. Captures awaiting a saved review: 5.
+Saved reviews: 6. Captures awaiting a saved review: 4.
 
-Pending capture IDs: amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -157,3 +157,33 @@ Unknowns
 
 - No application deadline was captured. Check availability, assigned office and the exact placement dates.
 - Verify the work sample instructions, accepted fields of study and work authorization rules in the full posting.
+
+## Amazon — UX Researcher Intern - Summer 2027
+
+ID: amazon-ux-research
+
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592767/ux-researcher-intern-summer-2027>) (partial capture, 2026-11-18)
+
+Verdict is explore. Eligibility is unverified. Human review is pending.
+
+Rationale: User studies, surveys and analysis of user behavior fit the user experience and data interests. The role calls for a relevant master&#39;s degree or higher and enrollment in a US-located academic program.
+
+Requirements
+
+- At least 18 years old, enrolled in a US-located academic program and pursuing a relevant master&#39;s degree or higher with graduation in the stated window. (evidence: Applicants must be 18 or older, enrolled in a US-located academic program, and pursuing a relevant master&#39;s degree or higher with graduation between December 2027 and June 2028.)
+- Research experience, at least two creative samples and willingness to relocate. (evidence: It requires research experience, at least two creative samples, and willingness to relocate.)
+- Available for 12 weeks of full-time office work. (evidence: The role calls for full-time office work for 12 weeks.)
+- Visa sponsorship is unavailable. (evidence: Visa sponsorship is not offered.)
+
+Dates
+
+- `program_start` — May/June 2027 (evidence: starts May/June 2027)
+- `program_end` — August/September 2027 (evidence: finishes August/September 2027)
+- `graduation_window` — between December 2027 and June 2028 (evidence: graduation between December 2027 and June 2028)
+
+Missing from the extraction: application deadline.
+
+Unknowns
+
+- No application deadline was captured. Check current availability, assigned office and exact dates.
+- Confirm which programs qualify, what the creative samples must contain and the work authorization requirements in light of the sponsorship restriction.

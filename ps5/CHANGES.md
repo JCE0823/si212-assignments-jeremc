@@ -14,9 +14,13 @@ Initial design: f4dcfb87e53db25f40ee84953ceb405b0e9b83ba
 
 the tracker mark Amazon intern as explore even though it reqires master or higher while im only bacheloer. It didnt check the required degree
 
+<!-- attested 2026-11-19 sha256:9f1db3227551 -->
+
 ### Why this fix (my own words)
 
 bc it is more percise so that ppl with bachloer's only wont have job appication with master only
+
+<!-- attested 2026-11-19 sha256:6ba01bdd8beb -->
 
 ## 2. Flag application deadlines without a confirmed year
 
@@ -30,6 +34,10 @@ bc it is more percise so that ppl with bachloer's only wont have job appication 
 
 it fix that when the year of the deadline is unclear, it will let the human check it manually
 
+<!-- attested 2026-11-19 sha256:8b0f4d781c39 -->
+
 ### Why this fix (my own words)
 
 bc when letting human check those unclear one so that the expired one wont be in the list
+
+<!-- attested 2026-11-19 sha256:7cde7a06d8e5 -->

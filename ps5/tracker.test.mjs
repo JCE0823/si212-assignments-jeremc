@@ -275,7 +275,9 @@ test('a competing creator cannot be overwritten', (t) => {
 });
 
 test('regenerates in ID order from saved output after live files are changed', (t) => {
-  const { root, inputPath, reviewPath, reportPath } = fixture(t);
+  const { root, input, inputPath, reviewPath, reportPath } = fixture(t, {
+    input: { capture_method: 'Full copy of the employer posting' },
+  });
   saveReview(root, 'test-role');
   addExample(root, 'first-role', { input: { title: 'First in ID order' } });
   saveReview(root, 'first-role');
@@ -286,10 +288,14 @@ test('regenerates in ID order from saved output after live files are changed', (
   const report = writeShortlist(root);
   assert.deepEqual(readFileSync(reportPath, 'utf8'), report);
   assert.ok(report.indexOf('First in ID order') < report.indexOf('Test Internship'));
+  const sourceLine = `Source: [Open posting](<${input.url}>) (captured ${input.captured_on})`;
+  assert.ok(report.includes(sourceLine));
+  assert.doesNotMatch(report, /\(partial capture,/);
+  assert.match(report, /Saved captures may be partial\. Verify original postings\./);
   for (const text of [
     'Python experience', 'Python required', 'program_start', 'June 2027',
     'Application deadline unknown', 'pending', 'explore', 'Test Employer',
-    'The role is relevant to software exploration.', 'partial', 'unverified',
+    'The role is relevant to software exploration.', 'unverified',
   ]) {
     assert.ok(report.includes(text), text);
   }

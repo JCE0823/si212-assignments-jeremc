@@ -1,6 +1,6 @@
 # Internship shortlist
 
-Source captures are partial. Recommendations and eligibility are unverified.
+Saved captures may be partial. Verify original postings. Recommendations and eligibility are unverified.
 
 Saved reviews: 10. Captures awaiting a saved review: 0.
 
@@ -8,7 +8,7 @@ Saved reviews: 10. Captures awaiting a saved review: 0.
 
 ID: amazon-aws-database
 
-Source: [Open posting](<https://www.amazon.jobs/en/jobs/10565667/software-development-engineer-intern-aws-database-2027-us>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10565667/software-development-engineer-intern-aws-database-2027-us>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -39,7 +39,7 @@ Unknowns
 
 ID: amazon-business-analyst
 
-Source: [Open posting](<https://www.amazon.jobs/en/jobs/10575250/business-analyst-intern-summer-2027>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10575250/business-analyst-intern-summer-2027>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -70,7 +70,7 @@ Unknowns
 
 ID: amazon-sde-india
 
-Source: [Open posting](<https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10513277/software-development-engineer-intern-may-2027-2-month-amazon-university-talent-acquisition>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -98,7 +98,7 @@ Unknowns
 
 ID: amazon-sde-us
 
-Source: [Open posting](<https://www.amazon.jobs/en/jobs/10552937/software-development-engineer-intern-summer-2027-usa>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10552937/software-development-engineer-intern-summer-2027-usa>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -129,7 +129,7 @@ Unknowns
 
 ID: amazon-ux-design
 
-Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592766/ux-designer-intern-summer-2027>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592766/ux-designer-intern-summer-2027>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -160,7 +160,7 @@ Unknowns
 
 ID: amazon-ux-research
 
-Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592767/ux-researcher-intern-summer-2027>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592767/ux-researcher-intern-summer-2027>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -190,7 +190,7 @@ Unknowns
 
 ID: google-forward-deployed
 
-Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/75665705386549958-forward-deployed-engineering-intern-bsms-summer-2027>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/75665705386549958-forward-deployed-engineering-intern-bsms-summer-2027>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -217,7 +217,7 @@ Unknowns
 
 ID: google-sre-emea-archived
 
-Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/142747733357142726-software-engineering-site-reliability-engineering-bsms-intern-2027>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/142747733357142726-software-engineering-site-reliability-engineering-bsms-intern-2027>) (captured 2026-11-18)
 
 Verdict is skip. Eligibility is unverified. Human review is pending.
 
@@ -243,7 +243,7 @@ Unknowns
 
 ID: google-swe-shanghai
 
-Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/95046224276529862-software-engineering-intern/>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/95046224276529862-software-engineering-intern/>) (captured 2026-11-18)
 
 Verdict is explore. Eligibility is unverified. Human review is pending.
 
@@ -269,7 +269,7 @@ Unknowns
 
 ID: google-swe-us-preview
 
-Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/100648618540573382-software-engineering-intern-bs-summer-2027>) (partial capture, 2026-11-18)
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/100648618540573382-software-engineering-intern-bs-summer-2027>) (captured 2026-11-18)
 
 Verdict is skip. Eligibility is unverified. Human review is pending.
 

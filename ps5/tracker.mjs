@@ -281,7 +281,7 @@ function renderShortlist(root) {
   const lines = [
     '# Internship shortlist',
     '',
-    'Source captures are partial. Recommendations and eligibility are unverified.',
+    'Saved captures may be partial. Verify original postings. Recommendations and eligibility are unverified.',
     '',
     `Saved reviews: ${saved.length}. Captures awaiting a saved review: ${pending.length}.`,
   ];
@@ -298,7 +298,7 @@ function renderShortlist(root) {
       '',
       `ID: ${markdownText(output.id)}`,
       '',
-      `Source: [Open posting](<${url}>) (partial capture, ${output.captured_on})`,
+      `Source: [Open posting](<${url}>) (captured ${output.captured_on})`,
       '',
       `Verdict is ${review.verdict}. Eligibility is ${review.eligibility}. Human review is ${output.human_review}.`,
       '',

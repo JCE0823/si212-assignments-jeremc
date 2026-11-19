@@ -38,7 +38,9 @@ it to delegate selection.
 
 The capture lives in `ps5/examples/<id>/input.json` under a fresh ID with
 lowercase letters or digits and single hyphens between words. This sample uses
-a placeholder URL. Record the actual source, date and capture method.
+a placeholder URL. Record the actual source, date and capture method. Before
+the first save, write the input and any revised criteria as UTF-8 without a BOM
+and with LF line endings, so Git preserves the exact bytes used for replay.
 
 ```json
 {

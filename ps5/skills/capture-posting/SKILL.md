@@ -11,7 +11,18 @@ Open the employer page when possible. Keep the HTTPS employer posting URL and id
 
 Use the actual local date when you capture the text. Preserve discrepancies, limited excerpts, missing details and conditional wording. Keep dates at their original precision, including a missing year. Describe only qualifications supported by the source, preserving distinctions such as mandatory and preferred. Leave unknown availability and qualifications unresolved.
 
-Save one input as UTF-8 JSON in `ps5/examples/<id>/input.json`. Choose a fresh ID with lowercase letters or digits and single hyphens between words. Create the example directory only if it does not already exist and leave earlier evidence intact. Use these exact fields with nonempty string values and `schema_version` set to 1.
+Save one input in `ps5/examples/<id>/input.json`. Choose a fresh ID with lowercase letters or digits and single hyphens between words. Create the example directory only if it does not already exist and leave earlier evidence intact. Before the first tracker save, write the input and any revised `ps5/criteria.json` as UTF-8 without a byte order mark (BOM), using LF line endings. Git keeps these JSON files as LF and the tracker hashes the exact bytes. With `inputPath` set to the new input path and `input` set to the capture object, this Node example writes the input in the required format without overwriting an existing file.
+
+```js
+import { writeFileSync } from 'node:fs';
+
+writeFileSync(inputPath, JSON.stringify(input, null, 2) + '\n', {
+  encoding: 'utf8',
+  flag: 'wx',
+});
+```
+
+Use these exact fields with nonempty string values and `schema_version` set to 1.
 
 ```json
 {

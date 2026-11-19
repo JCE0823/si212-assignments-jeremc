@@ -3,10 +3,12 @@
 ## What it does
 
 The tracker helps you decide which internships to investigate. Each run starts
-when you select a posting.
+when a posting is selected.
 
-1. Save the posting's URL, capture date and a short source summary.
-2. Ask an AI agent to follow `ps5/skills/assess-posting/SKILL.md`. The agent makes
+1. Give the agent an employer posting URL or delegate selection. The agent
+   follows `ps5/skills/capture-posting/SKILL.md` to save the posting and its
+   source details under a fresh ID.
+2. The agent follows `ps5/skills/assess-posting/SKILL.md` and makes
    a recommendation about relevance, extracts requirements and dates, and
    explains missing information in a draft.
 3. Run `ps5/tracker.mjs` to check the draft against the capture and save the
@@ -26,9 +28,17 @@ internship is worth investigating.
 Start at the assignments repository root with Node.js 22 or newer. The program
 uses Node's built-in modules.
 
-Choose a fresh ID with lowercase letters or digits, with single hyphens between
-words. Save the capture in `ps5/examples/<id>/input.json`. This sample uses a
-placeholder URL. Record the actual source, date and capture method for your posting.
+For a new posting, send your agent this prompt with the employer URL, or omit
+it to delegate selection.
+
+> Follow `ps5/skills/capture-posting/SKILL.md` for this employer posting URL,
+> or select one public employer posting that matches the tracker criteria.
+> Save the capture and follow `ps5/skills/assess-posting/SKILL.md`. Show me
+> the saved result, original source and details I need to verify.
+
+The capture lives in `ps5/examples/<id>/input.json` under a fresh ID with
+lowercase letters or digits and single hyphens between words. This sample uses
+a placeholder URL. Record the actual source, date and capture method.
 
 ```json
 {
@@ -43,7 +53,7 @@ placeholder URL. Record the actual source, date and capture method for your post
 }
 ```
 
-Send your agent this prompt.
+If you already have a saved capture, send your agent this prompt.
 
 > Follow `ps5/skills/assess-posting/SKILL.md` for the posting ID `test-role`.
 > Assess the saved capture against the criteria and show me the saved result

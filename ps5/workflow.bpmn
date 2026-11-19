@@ -6,12 +6,12 @@
   <bpmn:process id="workflow_process" isExecutable="false">
     <bpmn:laneSet id="lanes">
       <bpmn:lane id="lane_human" name="HUMAN operator">
-        <bpmn:flowNodeRef>posting_selected</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>save_posting</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>review_recommendation</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>recommendation_reviewed</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="lane_agent" name="AI AGENT">
+        <bpmn:flowNodeRef>posting_selected</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>save_posting</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>assess_posting</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="lane_program" name="PROGRAM">
@@ -23,14 +23,14 @@
     <bpmn:startEvent id="posting_selected" name="Posting selected">
       <bpmn:outgoing>to_save_posting</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="save_posting" name="Save posting&#10;README.md">
-      <bpmn:documentation>ps5/README.md</bpmn:documentation>
+    <bpmn:serviceTask id="save_posting" name="Save posting&#10;capture-posting.md">
+      <bpmn:documentation>ps5/skills/capture-posting/SKILL.md</bpmn:documentation>
       <bpmn:incoming>to_save_posting</bpmn:incoming>
       <bpmn:outgoing>to_assess_posting</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="save_writes_evidence">
         <bpmn:targetRef>evidence_capture</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
-    </bpmn:userTask>
+    </bpmn:serviceTask>
     <bpmn:serviceTask id="assess_posting" name="Assess posting&#10;assess-posting.md">
       <bpmn:documentation>ps5/skills/assess-posting/SKILL.md</bpmn:documentation>
       <bpmn:incoming>to_assess_posting</bpmn:incoming>
@@ -113,10 +113,10 @@
         <dc:Bounds x="160" y="80" width="1042" height="630" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="posting_selected_di" bpmnElement="posting_selected">
-        <dc:Bounds x="240" y="132" width="36" height="36" />
+        <dc:Bounds x="240" y="342" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="save_posting_di" bpmnElement="save_posting">
-        <dc:Bounds x="326" y="110" width="100" height="80" />
+        <dc:Bounds x="326" y="320" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="assess_posting_di" bpmnElement="assess_posting">
         <dc:Bounds x="506" y="320" width="100" height="80" />
@@ -161,13 +161,11 @@
         <dc:Bounds x="190" y="500" width="1012" height="210" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="to_save_posting_di" bpmnElement="to_save_posting">
-        <di:waypoint x="276" y="150" />
-        <di:waypoint x="326" y="150" />
+        <di:waypoint x="276" y="360" />
+        <di:waypoint x="326" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="to_assess_posting_di" bpmnElement="to_assess_posting">
-        <di:waypoint x="426" y="150" />
-        <di:waypoint x="466" y="150" />
-        <di:waypoint x="466" y="360" />
+        <di:waypoint x="426" y="360" />
         <di:waypoint x="506" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="to_validate_save_review_di" bpmnElement="to_validate_save_review">
@@ -200,8 +198,8 @@
         <di:waypoint x="1116" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="save_writes_evidence_di" bpmnElement="save_writes_evidence">
-        <di:waypoint x="376" y="190" />
-        <di:waypoint x="376" y="215" />
+        <di:waypoint x="376" y="320" />
+        <di:waypoint x="376" y="265" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="assess_writes_evidence_di" bpmnElement="assess_writes_evidence">
         <di:waypoint x="506" y="360" />

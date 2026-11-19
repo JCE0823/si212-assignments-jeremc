@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "verdict": "explore",
+  "eligibility": "unverified",
+  "rationale": "General-purpose coding and software engineering fit the software interest. The Shanghai posting summary gives an anticipated closing day with no year and says the window can close earlier when projects fill.",
+  "requirements": [
+    {
+      "text": "Computing-related bachelor's or master's enrollment, penultimate academic year and general-purpose coding experience.",
+      "evidence": "Minimum requirements include enrollment in a computing-related bachelor's or master's degree, penultimate academic year and experience coding in a general-purpose language."
+    },
+    {
+      "text": "English proficiency plus a current CV and an official or unofficial transcript in English.",
+      "evidence": "English proficiency is required. Applications need a current CV and an official or unofficial transcript in English."
+    },
+    {
+      "text": "Available for 10-12 full-time weeks.",
+      "evidence": "requiring 10-12 full-time weeks."
+    }
+  ],
+  "dates": [
+    {
+      "kind": "application_deadline",
+      "value": "until November 30",
+      "evidence": "The page gives an anticipated application window until November 30, with no year printed in that sentence, and says projects filling up may close it sooner."
+    },
+    {
+      "kind": "other",
+      "value": "summer 2027",
+      "evidence": "Software engineering internship for summer 2027"
+    }
+  ],
+  "missing_fields": [],
+  "unknowns": [
+    "The anticipated November 30 cutoff has no year in the captured sentence and the employer may close the window earlier. Confirm the year, cutoff and current availability.",
+    "Exact placement start and end dates, work authorization and visa sponsorship are not established by the partial summary."
+  ],
+  "apply_url": "https://www.google.com/about/careers/applications/jobs/results/95046224276529862-software-engineering-intern/"
+}

@@ -12,6 +12,8 @@ const DATE_KINDS = ['application_deadline', 'program_start', 'program_end', 'gra
 const DEADLINE_NOTE = /\b(?:deadlines?|(?:application|apply|submission) (?:closing date|date|window|cutoff))\b/i;
 const REQUIREMENTS_NOTE = /\b(?:requirements?|qualifications?|prerequisites?|eligibility)\b/i;
 const DATES_NOTE = /\b(?:dates|timelines?|timing|schedule|start|end|graduation window)\b/i;
+const UNCERTAINTY = /\b(?:unknown|unclear|uncertain|unspecified|unavailable|missing|unverified|undetermined|unconfirmed|unpublished|unstated|omitted|absent|tbd|yet to be (?:confirmed|verified|determined))\b/i;
+const NEGATED_DISCLOSURE = /\b(?:not|never|cannot|can't|couldn't|doesn't|didn't)\s+(?:be |been )?(?:available|capture[ds]?|confirm(?:ed)?|contain(?:ed|s)?|determine[ds]?|disclose[ds]?|establish(?:ed)?|give[ns]?|include[ds]?|known|list(?:ed|s)?|mention(?:ed|s)?|present|provide[ds]?|report(?:ed|s)?|show(?:n|s)?|specif(?:y|ied)|state[ds]?|verif(?:y|ied))\b/i;
 const SHA256 = /^[a-f0-9]{64}$/;
 const REPORT_COMMAND = 'node ps5/tracker.mjs report';
 
@@ -57,9 +59,15 @@ function sha256(bytes) {
 }
 
 function requireHttps(value, label) {
-  const url = typeof value === 'string' ? URL.parse(value) : null;
-  validate(url?.protocol === 'https:' && /^https:\/\/[^/\\\s]/i.test(value) && !/\s/u.test(value),
-    `${label} must be a valid HTTPS URL.`);
+  const message = `${label} must be a valid HTTPS URL.`;
+  validate(typeof value === 'string' && /^https:\/\/[^/\\\s]/i.test(value) && !/\s/u.test(value), message);
+  let url;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new Error(message);
+  }
+  validate(url.protocol === 'https:', message);
 }
 
 function requireCalendarDate(value, label) {
@@ -80,12 +88,23 @@ function validateInput(input, id) {
   requireCalendarDate(input.captured_on, 'input.captured_on');
 }
 
+function hasLimitation(notes, topic) {
+  // Match the topic and uncertainty in the same clause.
+  const absentTopic = new RegExp(`\\b(?:no|lack(?:s|ed|ing)?)\\s+(?:(?:a|an|clear|exact|known|specific|confirmed)\\s+){0,2}${topic.source}`, 'i');
+  return notes.some((note) => note.split(/[.!?;\r\n]|\b(?:but|however|although)\b/i)
+    .some((clause) => topic.test(clause) &&
+      (UNCERTAINTY.test(clause) || NEGATED_DISCLOSURE.test(clause) || absentTopic.test(clause))));
+}
+
 function validateReview(review, sourceUrl, sourceText) {
   requireSchema(review, 'review');
   validate(VERDICTS.includes(review.verdict), `review.verdict must be one of ${VERDICTS.join(', ')}.`);
   validate(review.eligibility === 'unverified', 'review.eligibility must be unverified.');
-  validate(nonempty(review.rationale) && /[\p{L}\p{N}]/u.test(review.rationale),
-    'review.rationale must explain the verdict.');
+  const rationale = typeof review.rationale === 'string' ? review.rationale.trim() : '';
+  // This is a minimum description check. The operator still judges the rationale.
+  const words = rationale.match(/\p{L}[\p{L}\p{N}]*/gu) ?? [];
+  validate(rationale.length >= 12 && words.length >= 3 && !/^(?:placeholder|todo|tbd)\b/i.test(rationale),
+    'review.rationale must explain the verdict in at least three words and 12 characters.');
   requireHttps(review.apply_url, 'review.apply_url');
   validate(review.apply_url === sourceUrl, 'review.apply_url must match the source URL.');
 
@@ -116,15 +135,15 @@ function validateReview(review, sourceUrl, sourceText) {
   });
 
   if (!review.dates.some((date) => date.kind === 'application_deadline')) {
-    validate(review.unknowns.some((note) => DEADLINE_NOTE.test(note)),
+    validate(hasLimitation(review.unknowns, DEADLINE_NOTE),
       'review.unknowns must flag that the application deadline is unknown.');
   }
   if (review.requirements.length === 0) {
-    validate(review.unknowns.some((note) => REQUIREMENTS_NOTE.test(note)),
+    validate(hasLimitation(review.unknowns, REQUIREMENTS_NOTE),
       'review.unknowns must explain the missing requirements.');
   }
   if (review.dates.length === 0) {
-    validate(review.unknowns.some((note) => DATES_NOTE.test(note)),
+    validate(hasLimitation(review.unknowns, DATES_NOTE),
       'review.unknowns must explain the missing dates.');
   }
 }
@@ -224,7 +243,22 @@ export function saveReview(root, id) {
 function markdownText(value) {
   // Collapse line breaks and encode punctuation that could create Markdown or HTML.
   return value.replace(/[\s\u0000-\u001f\u007f]+/gu, ' ').trim()
-    .replace(/[!"#&'()*+:<>\[\]\\_`{|}~]/gu, (character) => `&#${character.codePointAt(0)};`);
+    .replace(/[!"#&'()*+:<>\[\]\\_`{|}~]/gu, (character) => `&#${character.codePointAt(0)};`)
+    .replace(/^-+/u, (hyphens) => '&#45;'.repeat(hyphens.length))
+    .replace(/^(\d{1,9})\.(?=\s|$)/u, '$1&#46;');
+}
+
+function requirePendingFiles(folder) {
+  let hasPendingFile = false;
+  for (const name of ['input.json', 'review.json']) {
+    const path = join(folder, name);
+    const stats = lstatSync(path, { throwIfNoEntry: false });
+    if (stats) {
+      validate(stats.isFile(), `${path} must be a regular file.`);
+      hasPendingFile = true;
+    }
+  }
+  validate(hasPendingFile, `${folder} is missing output.json, input.json and review.json.`);
 }
 
 function renderShortlist(root) {
@@ -237,11 +271,13 @@ function renderShortlist(root) {
   const pending = [];
   for (const id of ids) {
     requireId(id);
-    validate(lstatSync(join(examples, id)).isDirectory(), `Example ${id} must be a directory.`);
-    const path = join(examples, id, 'output.json');
+    const folder = join(examples, id);
+    validate(lstatSync(folder).isDirectory(), `Example ${id} must be a directory.`);
+    const path = join(folder, 'output.json');
     if (lstatSync(path, { throwIfNoEntry: false })) {
       saved.push(readOutput(path, id));
     } else {
+      requirePendingFiles(folder);
       pending.push(id);
     }
   }

@@ -93,6 +93,18 @@ test('stores evidence with byte hashes, source metadata and actual processing ti
   assert.match(readFileSync(reportPath, 'utf8'), /Test Employer/);
 });
 
+test('validates URLs without URL.parse for Node 22.0 compatibility', (t) => {
+  const { root } = fixture(t);
+  const parse = Object.getOwnPropertyDescriptor(URL, 'parse');
+  Reflect.deleteProperty(URL, 'parse');
+  try {
+    assert.equal(saveReview(root, 'test-role').status, 'saved');
+    assert.match(writeShortlist(root), /https:\/\/example\.com\/internship/);
+  } finally {
+    if (parse) Object.defineProperty(URL, 'parse', parse);
+  }
+});
+
 test('identical replay preserves original evidence bytes', (t) => {
   const { root, outputPath, reviewPath, review } = fixture(t);
   assert.equal(saveReview(root, 'test-role').status, 'saved');
@@ -145,6 +157,17 @@ const invalidCases = [
   ['unknown draft schema version', { review: { schema_version: 2 } }, /schema_version/i],
   ['empty capture text', { input: { text: '   ' } }, /text/i],
   ['empty rationale', { review: { rationale: '  ' } }, /rationale/i],
+  ['one-character rationale', { review: { rationale: 'x' } }, /rationale/i],
+  ['placeholder rationale', { review: { rationale: 'TODO write this rationale later' } }, /rationale/i],
+  ['positive requirement claim as an empty-requirements limitation', {
+    review: { requirements: [], unknowns: ['Application deadline unknown', 'Requirements are confirmed'] },
+  }, /requirements/i],
+  ['positive dates claim as an empty-dates limitation', {
+    review: { dates: [], unknowns: ['Application deadline unknown', 'Program dates are confirmed'] },
+  }, /dates/i],
+  ['positive deadline claim as an unknown deadline', {
+    review: { unknowns: ['Application deadline is confirmed. Location unknown.'] },
+  }, /deadline/i],
   ['empty requirements without stated limitation', {
     review: { requirements: [] },
   }, /requirements/i],
@@ -174,7 +197,7 @@ test('allows empty requirements and dates with their limitations stated', (t) =>
     review: {
       requirements: [],
       dates: [],
-      unknowns: ['Application deadline unknown', 'Requirements and other dates were not captured'],
+      unknowns: ['Application deadline not established by this capture', 'Requirements and other dates were not captured'],
     },
   });
   assert.equal(saveReview(root, 'test-role').status, 'saved');
@@ -231,22 +254,47 @@ test('regenerates in ID order from saved output after live files are changed', (
 
 test('lists pending captures separately from saved records', (t) => {
   const { root } = fixture(t);
+  const inputOnly = addExample(root, 'input-only');
+  const draftOnly = addExample(root, 'draft-only');
+  rmSync(inputOnly.reviewPath);
+  rmSync(draftOnly.inputPath);
   const report = writeShortlist(root);
-  assert.match(report, /pending/i);
-  assert.match(report, /test-role/);
+  assert.match(report, /Captures awaiting a saved review: 3/);
+  assert.match(report, /draft-only, input-only, test-role/);
   assert.doesNotMatch(report, /Test Internship/);
   assert.equal(saveReview(root, 'test-role').status, 'saved');
+});
+
+test('rejects an empty example directory without replacing the report', (t) => {
+  const { root, reportPath } = fixture(t);
+  const original = writeShortlist(root);
+  mkdirSync(join(root, 'examples', 'empty-role'));
+  assert.throws(() => writeShortlist(root), /empty-role.*input\.json.*review\.json/i);
+  assert.equal(readFileSync(reportPath, 'utf8'), original);
+});
+
+test('rejects a draft directory placeholder even when there is a real input', (t) => {
+  const { root, reviewPath } = fixture(t);
+  rmSync(reviewPath);
+  mkdirSync(reviewPath);
+  assert.throws(() => writeShortlist(root), /review\.json.*regular file/i);
 });
 
 test('escapes Markdown and HTML from saved text', (t) => {
   const { root } = fixture(t, {
     input: { title: 'Test | Internship <img src=x>' },
-    review: { rationale: 'Example [link](https://example.com)\n# inject heading' },
+    review: {
+      rationale: 'Example [link](https://example.com)\n# inject heading',
+      unknowns: ['Application deadline unknown', '---', '- nested bullet', '1. nested list'],
+    },
   });
   const { status } = saveReview(root, 'test-role');
   assert.equal(status, 'saved');
   const report = writeShortlist(root);
   assert.doesNotMatch(report, /<img|\[link\]\(|\n# inject heading|Test \| Internship/);
+  assert.doesNotMatch(report, /\n- (?:---|- nested bullet|1\. nested list)(?:\n|$)/);
+  assert.match(report, /&#45;/);
+  assert.match(report, /1&#46; nested list/);
 });
 
 test('fails visibly for a corrupt stored output without replacing the report', (t) => {

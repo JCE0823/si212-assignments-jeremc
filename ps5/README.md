@@ -8,12 +8,13 @@ when you select a posting.
 1. Save the posting's URL, capture date and a short source summary.
 2. Ask an AI agent to follow `ps5/skills/assess-posting/SKILL.md`. The agent makes
    a recommendation about relevance, extracts requirements and dates, and
-   records unknowns in a draft.
+   explains missing information in a draft.
 3. Run `ps5/tracker.mjs` to check the draft against the capture and save the
-   evidence. The program checks the record and regenerates the shortlist.
-4. Review the saved recommendation and open the original source. Check whether
-   it is still available, confirm application dates and requirements, and make
-   your own decision about applying.
+   evidence. The program checks that the draft explicitly marks absent
+   deadlines and empty requirements or dates, then regenerates the shortlist.
+4. Review the saved recommendation and the explanations for missing information.
+   Open the original source to check whether it is still available, confirm
+   application dates and requirements, and make your own decision about applying.
 
 The ten examples summarize real public posting sources, including historical
 previews where identified. Each capture is partial, and each recommendation is
@@ -69,7 +70,8 @@ refresh failed, fix the reported problem and rerun `report`.
 
 - `ps5/criteria.json` holds the exploration criteria and eligibility policy.
 - `ps5/examples/<id>/input.json` holds the capture and its source details.
-- `ps5/examples/<id>/review.json` holds the AI agent's draft.
+- `ps5/examples/<id>/review.json` holds the AI agent's draft, including
+  its `missing_fields` list and plain-language explanations in `unknowns`.
 - `ps5/examples/<id>/output.json` holds the accepted review, hashes of the
   input and criteria, the processing time and the pending human-review status.
 - `ps5/data/shortlist.md` is regenerated from the saved outputs. Example IDs

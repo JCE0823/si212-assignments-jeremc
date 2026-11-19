@@ -19,14 +19,24 @@ Write `ps5/examples/<id>/review.json` with this shape:
   "rationale": "Explain relevance and any important limitation in plain language.",
   "requirements": [{"text": "Paraphrased requirement", "evidence": "exact substring from input.text"}],
   "dates": [{"kind": "program_start", "value": "exact date phrase from input.text", "evidence": "exact substring from input.text containing that phrase"}],
+  "missing_fields": ["application_deadline"],
   "unknowns": ["Application deadline not established by this capture"],
   "apply_url": "the input.url"
 }
 ```
 
-Allowed verdicts: `explore`, `needs_review`, `skip`. Allowed date kinds: `application_deadline`, `program_start`, `program_end`, `graduation_window`, `other`. Dates may be ranges or approximate phrases as written. Extract separate kinds separately; a start date, posting date or graduation window is not an application deadline. Do not invent a precise date. When no application deadline is stated, leave that kind out and explicitly flag it in unknowns. Collect meaningful mandatory requirements and relevant restrictions that the capture actually contains. Use empty arrays when the capture contains no evidence; explain the missing information in unknowns. Evidence must be verbatim from the capture, not invented quotations from the live page.
+Allowed verdicts: `explore`, `needs_review`, `skip`. Allowed date kinds: `application_deadline`, `program_start`, `program_end`, `graduation_window`, `other`. Dates may be ranges or approximate phrases as written. Extract separate kinds separately; a start date, posting date or graduation window is not an application deadline. Do not invent a precise date. Collect meaningful mandatory requirements and relevant restrictions that the capture actually contains. Use empty arrays when the capture provides no evidence for those fields. Evidence must be verbatim from the capture, not invented quotations from the live page.
 
-Re-read the input against your draft. Check every evidence string, date kind and assumption. Run:
+Always include `missing_fields` with each applicable marker once.
+
+- Include `application_deadline` exactly when `dates` has no `application_deadline` entry.
+- Include `requirements` exactly when the requirements array is empty.
+- Include `dates` exactly when the dates array is empty.
+- Use `[]` when all three are present.
+
+When a field is missing, explain the gap in `unknowns` using one or more plain-language notes. Also use those notes for other uncertainties. Check the accuracy of each explanation against the capture. The program checks the markers against the extracted fields and requires at least one note when markers are present.
+
+Re-read the input against your draft. Check every evidence string, date kind, missing-field marker and assumption. Run:
 
 ```powershell
 node ps5/tracker.mjs save <id>

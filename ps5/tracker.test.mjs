@@ -39,6 +39,7 @@ function addExample(root, id, overrides = {}) {
     dates: [{
       kind: 'program_start', value: 'June 2027', evidence: 'Internship starts June 2027',
     }],
+    missing_fields: ['application_deadline'],
     unknowns: ['Application deadline unknown'],
     apply_url: input.url,
     ...overrides.review,
@@ -159,21 +160,36 @@ const invalidCases = [
   ['empty rationale', { review: { rationale: '  ' } }, /rationale/i],
   ['one-character rationale', { review: { rationale: 'x' } }, /rationale/i],
   ['placeholder rationale', { review: { rationale: 'TODO write this rationale later' } }, /rationale/i],
-  ['positive requirement claim as an empty-requirements limitation', {
-    review: { requirements: [], unknowns: ['Application deadline unknown', 'Requirements are confirmed'] },
-  }, /requirements/i],
-  ['positive dates claim as an empty-dates limitation', {
-    review: { dates: [], unknowns: ['Application deadline unknown', 'Program dates are confirmed'] },
-  }, /dates/i],
-  ['positive deadline claim as an unknown deadline', {
-    review: { unknowns: ['Application deadline is confirmed. Location unknown.'] },
-  }, /deadline/i],
-  ['empty requirements without stated limitation', {
+  ['omitted missing_fields even with explanatory notes', {
+    review: { missing_fields: undefined },
+  }, /missing_fields.*array/i],
+  ['non-array missing_fields', {
+    review: { missing_fields: 'application_deadline' },
+  }, /missing_fields.*array/i],
+  ['omitted deadline marker despite a note about the deadline', {
+    review: { missing_fields: [], unknowns: ['Application deadline is confirmed, location unknown'] },
+  }, /missing_fields.*application_deadline/i],
+  ['omitted requirements marker when requirements are empty', {
     review: { requirements: [] },
-  }, /requirements/i],
-  ['missing explicit unknown deadline', {
-    review: { unknowns: ['Location unknown'] },
-  }, /deadline/i],
+  }, /missing_fields.*requirements/i],
+  ['omitted dates marker when dates are empty', {
+    review: { dates: [] },
+  }, /missing_fields.*dates/i],
+  ['extra missing_fields marker when requirements were extracted', {
+    review: { missing_fields: ['application_deadline', 'requirements'] },
+  }, /missing_fields/i],
+  ['duplicate missing_fields markers', {
+    review: { missing_fields: ['application_deadline', 'application_deadline'] },
+  }, /missing_fields.*duplicate/i],
+  ['unrecognized missing_fields marker', {
+    review: { missing_fields: ['application_deadline', 'location'] },
+  }, /missing_fields.*location/i],
+  ['missing notes when missing_fields is nonempty', {
+    review: { unknowns: [] },
+  }, /unknowns/i],
+  ['blank explanatory note when missing_fields is nonempty', {
+    review: { unknowns: ['  '] },
+  }, /unknowns/i],
 ];
 
 for (const [name, overrides, error] of invalidCases) {
@@ -191,16 +207,43 @@ test('rejects a path traversal ID before using it', (t) => {
   assert.equal(existsSync(join(root, 'other', 'output.json')), false);
 });
 
-test('allows empty requirements and dates with their limitations stated', (t) => {
+test('accepts exact missing_fields and explanations in varied wording', (t) => {
   const { root } = fixture(t, {
     input: { text: 'Summer internship with the software group.' },
     review: {
       requirements: [],
       dates: [],
-      unknowns: ['Application deadline not established by this capture', 'Requirements and other dates were not captured'],
+      missing_fields: ['dates', 'requirements', 'application_deadline'],
+      unknowns: [
+        'The application deadline is unavailable in the captured text.',
+        'The capture gives no mandatory qualifications.',
+        'Program dates do not appear in the capture.',
+      ],
     },
   });
-  assert.equal(saveReview(root, 'test-role').status, 'saved');
+  const { status, output } = saveReview(root, 'test-role');
+  assert.equal(status, 'saved');
+  assert.deepEqual(output.review.missing_fields, ['dates', 'requirements', 'application_deadline']);
+  assert.match(writeShortlist(root), /Missing from the extraction: dates, requirements, application deadline/);
+});
+
+test('accepts empty missing_fields and notes when an explicit deadline was extracted', (t) => {
+  const deadline = {
+    kind: 'application_deadline',
+    value: 'May 1, 2027',
+    evidence: 'Apply by May 1, 2027',
+  };
+  const { root, reviewPath, review, outputPath } = fixture(t, {
+    input: { text: 'Python required. Apply by May 1, 2027.' },
+    review: { dates: [deadline], missing_fields: [], unknowns: [] },
+  });
+  writeJson(reviewPath, { ...review, missing_fields: ['application_deadline'] });
+  assert.throws(() => saveReview(root, 'test-role'), /missing_fields/i);
+  assert.equal(existsSync(outputPath), false);
+  writeJson(reviewPath, review);
+  const result = saveReview(root, 'test-role');
+  assert.equal(result.status, 'saved');
+  assert.deepEqual(result.output.review.missing_fields, []);
 });
 
 test('a competing creator cannot be overwritten', (t) => {
@@ -305,6 +348,8 @@ test('fails visibly for a corrupt stored output without replacing the report', (
   assert.throws(() => writeShortlist(root), /output\.json/i);
   writeJson(outputPath, { ...output, review: null });
   assert.throws(() => writeShortlist(root), /review/i);
+  writeJson(outputPath, { ...output, review: { ...output.review, missing_fields: [] } });
+  assert.throws(() => writeShortlist(root), /output\.json.*missing_fields/i);
   assert.deepEqual(readFileSync(reportPath), originalReport);
 });
 

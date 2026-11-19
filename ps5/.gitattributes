@@ -1,0 +1,4 @@
+criteria.json text eol=lf
+examples/*/input.json text eol=lf
+examples/*/review.json text eol=lf
+examples/*/output.json text eol=lf

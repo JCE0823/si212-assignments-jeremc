@@ -41,6 +41,8 @@ lowercase letters or digits and single hyphens between words. This sample uses
 a placeholder URL. Record the actual source, date and capture method. Before
 the first save, write the input and any revised criteria as UTF-8 without a BOM
 and with LF line endings, so Git preserves the exact bytes used for replay.
+The tracker rejects a BOM or carriage returns in either file before saving
+evidence and names the file to fix.
 
 ```json
 {
@@ -75,8 +77,9 @@ Repeating a valid save with identical input and criteria bytes and the same
 review leaves the existing output intact. A changed input, criteria file or
 review for an existing ID is rejected. Use a new ID for a revised run and keep
 the original evidence. If validation fails before saving, fix the reported
-problem and retry. If the command says evidence was saved but the report
-refresh failed, fix the reported problem and rerun `report`.
+problem in the unsaved run and retry. If the command says evidence was saved
+or already saved but the report refresh failed, keep the saved output and
+draft, fix the reported problem, and rerun `node ps5/tracker.mjs report`.
 
 ## Where its data lives
 

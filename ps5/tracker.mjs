@@ -11,6 +11,7 @@ const VERDICTS = ['explore', 'needs_review', 'skip'];
 const DATE_KINDS = ['application_deadline', 'program_start', 'program_end', 'graduation_window', 'other'];
 const MISSING_FIELDS = ['application_deadline', 'requirements', 'dates'];
 const SHA256 = /^[a-f0-9]{64}$/;
+const UTF8_BOM = Buffer.from([0xef, 0xbb, 0xbf]);
 const REPORT_COMMAND = 'node ps5/tracker.mjs report';
 
 function validate(condition, message) {
@@ -40,9 +41,13 @@ function requireSchema(record, label) {
   validate(record.schema_version === 1, `${label}.schema_version must be 1.`);
 }
 
-function readJson(path) {
+function readJson(path, { forHashing = false } = {}) {
   try {
     const bytes = readFileSync(path);
+    if (forHashing) {
+      validate(!bytes.subarray(0, UTF8_BOM.length).equals(UTF8_BOM), 'Save as UTF-8 without a BOM.');
+      validate(!bytes.includes(0x0d), 'Use LF line endings.');
+    }
     const json = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
     return { bytes, record: JSON.parse(json) };
   } catch (error) {
@@ -185,12 +190,12 @@ export function saveReview(root, id) {
   const folder = join(root, 'examples', id);
   validate(lstatSync(folder).isDirectory(), `${folder} must be an example directory.`);
 
-  const { bytes: criteriaBytes, record: criteria } = readJson(join(root, 'criteria.json'));
+  const { bytes: criteriaBytes, record: criteria } = readJson(join(root, 'criteria.json'), { forHashing: true });
   requireSchema(criteria, 'criteria');
   if (criteria.eligibility_policy !== undefined) {
     validate(criteria.eligibility_policy === 'unverified', 'criteria.eligibility_policy must be unverified.');
   }
-  const { bytes: inputBytes, record: input } = readJson(join(folder, 'input.json'));
+  const { bytes: inputBytes, record: input } = readJson(join(folder, 'input.json'), { forHashing: true });
   validateInput(input, id);
   const { record: review } = readJson(join(folder, 'review.json'));
   validateReview(review, input.url, input.text);

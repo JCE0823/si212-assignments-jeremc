@@ -42,6 +42,10 @@ Re-read the input against your draft. Check every evidence string, date kind, mi
 node ps5/tracker.mjs save <id>
 ```
 
-The program validates and stores output, with hashes and processing time, and refreshes the shortlist. A rejection is a failed attempt: read its message and fix the draft; never claim it saved. Identical retries are safe; changed reviews require a fresh ID to preserve earlier evidence. Do not overwrite old examples to improve their appearance.
+The program validates and stores output, with hashes and processing time, and refreshes the shortlist. If validation fails before saving, read the error, fix the reported issue in the unsaved run and retry. Correct an invalid draft in `review.json`. If the error identifies a file format problem in the input or criteria, save the affected file as UTF-8 without a BOM and with LF line endings.
+
+If the command says evidence was saved or already saved but the report refresh failed, preserve the saved output and draft. Fix the reported shortlist problem and rerun `node ps5/tracker.mjs report`. Tell the student the evidence was saved and whether the shortlist refresh succeeded.
+
+Identical retries are safe. Use a fresh ID for a changed review and preserve earlier examples.
 
 Finally show the saved output and original URL to the student. State that human review is pending. The student checks qualifications, source freshness and dates before deciding whether to apply. Do not submit applications, send messages or write student change-record answers.

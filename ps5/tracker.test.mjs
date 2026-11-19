@@ -138,6 +138,28 @@ test('a changed criteria hash conflicts with saved evidence', (t) => {
   assert.deepEqual(readFileSync(outputPath), first);
 });
 
+for (const [fileName, fixtureKey] of [['input.json', 'inputPath'], ['criteria.json', 'criteriaPath']]) {
+  for (const [format, convert, message] of [
+    ['CRLF', (text) => text.replaceAll('\n', '\r\n'), /LF line endings/],
+    ['CR-only', (text) => text.replaceAll('\n', '\r'), /LF line endings/],
+    ['UTF-8 BOM', (text) => '\uFEFF' + text, /UTF-8 without a BOM/],
+  ]) {
+    test(`rejects ${format} in hashed ${fileName} without creating output`, (t) => {
+      const { root, outputPath, [fixtureKey]: path } = fixture(t);
+      const invalid = convert(readFileSync(path, 'utf8'));
+      writeFileSync(path, invalid);
+
+      assert.throws(() => saveReview(root, 'test-role'), (error) => {
+        assert.ok(error.message.includes(fileName));
+        assert.match(error.message, message);
+        return true;
+      });
+      assert.equal(existsSync(outputPath), false);
+      assert.equal(readFileSync(path, 'utf8'), invalid);
+    });
+  }
+}
+
 const invalidCases = [
   ['requirement evidence absent from source', {
     review: { requirements: [{ text: 'Python experience', evidence: 'not in input' }] },

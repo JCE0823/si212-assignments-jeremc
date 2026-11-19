@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 6. Captures awaiting a saved review: 4.
+Saved reviews: 7. Captures awaiting a saved review: 3.
 
-Pending capture IDs: google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -187,3 +187,30 @@ Unknowns
 
 - No application deadline was captured. Check current availability, assigned office and exact dates.
 - Confirm which programs qualify, what the creative samples must contain and the work authorization requirements in light of the sponsorship restriction.
+
+## Google — Forward Deployed Engineering Intern, BS/MS, Summer 2027
+
+ID: google-forward-deployed
+
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/75665705386549958-forward-deployed-engineering-intern-bsms-summer-2027>) (partial capture, 2026-11-18)
+
+Verdict is explore. Eligibility is unverified. Human review is pending.
+
+Rationale: Building customer AI systems and data pipelines fits the software and data interests. At capture the instruction to finish before November 20, 2026 was close, and the posting summary reports rolling review.
+
+Requirements
+
+- Remain in the US during the placement. (evidence: Students must remain in the US during the placement.)
+- Pursue a bachelor&#39;s or master&#39;s degree in engineering, computing or a related subject, and have Python-like programming experience. (evidence: Minimum qualifications include pursuing a bachelor&#39;s or master&#39;s in engineering/computing or a related subject, Python-like programming)
+- Experience launching production AI or cloud systems and working on structured and unstructured data pipelines using vector databases and RAG. (evidence: experience launching production AI/cloud systems, and structured/unstructured data pipelines using vector databases and RAG.)
+
+Dates
+
+- `application_deadline` — before November 20, 2026 (evidence: Application instruction&#58; finish before November 20, 2026; review is rolling.)
+- `other` — summer 2027 (evidence: US summer 2027 internship)
+
+Unknowns
+
+- The partial summary cannot confirm availability or an exact cutoff time. Verify both at the employer source, given the short window recorded at capture.
+- The introduction targets penultimate-year students. US study, returning to a degree and 12 full-time weeks outside term are listed as preferred. Check how the employer applies these conditions.
+- Exact placement dates, work authorization and visa sponsorship are not established by this summary.

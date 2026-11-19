@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "verdict": "explore",
+  "eligibility": "unverified",
+  "rationale": "Building customer AI systems and data pipelines fits the software and data interests. At capture the instruction to finish before November 20, 2026 was close, and the posting summary reports rolling review.",
+  "requirements": [
+    {
+      "text": "Remain in the US during the placement.",
+      "evidence": "Students must remain in the US during the placement."
+    },
+    {
+      "text": "Pursue a bachelor's or master's degree in engineering, computing or a related subject, and have Python-like programming experience.",
+      "evidence": "Minimum qualifications include pursuing a bachelor's or master's in engineering/computing or a related subject, Python-like programming"
+    },
+    {
+      "text": "Experience launching production AI or cloud systems and working on structured and unstructured data pipelines using vector databases and RAG.",
+      "evidence": "experience launching production AI/cloud systems, and structured/unstructured data pipelines using vector databases and RAG."
+    }
+  ],
+  "dates": [
+    {
+      "kind": "application_deadline",
+      "value": "before November 20, 2026",
+      "evidence": "Application instruction: finish before November 20, 2026; review is rolling."
+    },
+    {
+      "kind": "other",
+      "value": "summer 2027",
+      "evidence": "US summer 2027 internship"
+    }
+  ],
+  "missing_fields": [],
+  "unknowns": [
+    "The partial summary cannot confirm availability or an exact cutoff time. Verify both at the employer source, given the short window recorded at capture.",
+    "The introduction targets penultimate-year students. US study, returning to a degree and 12 full-time weeks outside term are listed as preferred. Check how the employer applies these conditions.",
+    "Exact placement dates, work authorization and visa sponsorship are not established by this summary."
+  ],
+  "apply_url": "https://www.google.com/about/careers/applications/jobs/results/75665705386549958-forward-deployed-engineering-intern-bsms-summer-2027"
+}

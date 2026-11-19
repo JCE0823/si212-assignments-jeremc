@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "amazon-ux-design",
+  "title": "UX Designer Intern - Summer 2027",
+  "company": "Amazon",
+  "source_url": "https://www.amazon.jobs/en/jobs/10592766/ux-designer-intern-summer-2027",
+  "captured_on": "2026-11-18",
+  "input_sha256": "a8459cbbd1d1707906662d8d617c006fa42965cf0af7935a9679ff2fb77203c7",
+  "criteria_sha256": "1dce773b24ec1dc9f9b16d68fa4833063b9f63d0ba9f6e4096383ef41dd5d002",
+  "processed_at": "2026-11-19T04:59:15.888Z",
+  "human_review": "pending",
+  "review": {
+    "schema_version": 1,
+    "verdict": "explore",
+    "eligibility": "unverified",
+    "rationale": "Interface design, prototyping and customer-informed design fit the user experience interest. Check the work samples, degree window, relocation and visa sponsorship restrictions before deciding whether to apply.",
+    "requirements": [
+      {
+        "text": "At least 18 years old, with design-tool and teamwork experience and at least two creative work samples.",
+        "evidence": "Applicants need to be at least 18, have design-tool and teamwork experience, and provide two or more creative work samples."
+      },
+      {
+        "text": "Relevant bachelor's or master's studies with graduation in the stated window and further study after the internship.",
+        "evidence": "Relevant bachelor's or master's studies must lead to graduation between December 2027 and June 2028, with further study after the internship."
+      },
+      {
+        "text": "Available for the summer-only, 12-week full-time office placement.",
+        "evidence": "Summer only: starts May/June 2027 and ends August/September 2027, with a 12-week full-time office commitment."
+      },
+      {
+        "text": "Nationwide relocation is required.",
+        "evidence": "Nationwide relocation is required."
+      },
+      {
+        "text": "Visa sponsorship is unavailable.",
+        "evidence": "The employer states that visa sponsorship is unavailable for this role."
+      }
+    ],
+    "dates": [
+      {
+        "kind": "program_start",
+        "value": "May/June 2027",
+        "evidence": "starts May/June 2027"
+      },
+      {
+        "kind": "program_end",
+        "value": "August/September 2027",
+        "evidence": "ends August/September 2027"
+      },
+      {
+        "kind": "graduation_window",
+        "value": "between December 2027 and June 2028",
+        "evidence": "graduation between December 2027 and June 2028"
+      }
+    ],
+    "missing_fields": [
+      "application_deadline"
+    ],
+    "unknowns": [
+      "No application deadline was captured. Check availability, assigned office and the exact placement dates.",
+      "Verify the work sample instructions, accepted fields of study and work authorization rules in the full posting."
+    ],
+    "apply_url": "https://www.amazon.jobs/en/jobs/10592766/ux-designer-intern-summer-2027"
+  }
+}

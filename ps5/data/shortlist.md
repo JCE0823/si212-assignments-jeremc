@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 4. Captures awaiting a saved review: 6.
+Saved reviews: 5. Captures awaiting a saved review: 5.
 
-Pending capture IDs: amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -126,3 +126,34 @@ Unknowns
 - Applications are considered continuously. The partial capture has no fixed closing date and does not establish current availability.
 - Confirm assigned location, exact placement dates and whether a winter or fall placement is offered.
 - Work authorization, visa sponsorship and other qualifications omitted from the summary need checking.
+
+## Amazon — UX Designer Intern - Summer 2027
+
+ID: amazon-ux-design
+
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592766/ux-designer-intern-summer-2027>) (partial capture, 2026-11-18)
+
+Verdict is explore. Eligibility is unverified. Human review is pending.
+
+Rationale: Interface design, prototyping and customer-informed design fit the user experience interest. Check the work samples, degree window, relocation and visa sponsorship restrictions before deciding whether to apply.
+
+Requirements
+
+- At least 18 years old, with design-tool and teamwork experience and at least two creative work samples. (evidence: Applicants need to be at least 18, have design-tool and teamwork experience, and provide two or more creative work samples.)
+- Relevant bachelor&#39;s or master&#39;s studies with graduation in the stated window and further study after the internship. (evidence: Relevant bachelor&#39;s or master&#39;s studies must lead to graduation between December 2027 and June 2028, with further study after the internship.)
+- Available for the summer-only, 12-week full-time office placement. (evidence: Summer only&#58; starts May/June 2027 and ends August/September 2027, with a 12-week full-time office commitment.)
+- Nationwide relocation is required. (evidence: Nationwide relocation is required.)
+- Visa sponsorship is unavailable. (evidence: The employer states that visa sponsorship is unavailable for this role.)
+
+Dates
+
+- `program_start` — May/June 2027 (evidence: starts May/June 2027)
+- `program_end` — August/September 2027 (evidence: ends August/September 2027)
+- `graduation_window` — between December 2027 and June 2028 (evidence: graduation between December 2027 and June 2028)
+
+Missing from the extraction: application deadline.
+
+Unknowns
+
+- No application deadline was captured. Check availability, assigned office and the exact placement dates.
+- Verify the work sample instructions, accepted fields of study and work authorization rules in the full posting.

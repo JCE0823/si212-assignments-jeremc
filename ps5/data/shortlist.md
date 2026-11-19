@@ -2,9 +2,7 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 9. Captures awaiting a saved review: 1.
-
-Pending capture IDs: google-swe-us-preview.
+Saved reviews: 10. Captures awaiting a saved review: 0.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -266,3 +264,27 @@ Unknowns
 
 - The anticipated November 30 cutoff has no year in the captured sentence and the employer may close the window earlier. Confirm the year, cutoff and current availability.
 - Exact placement start and end dates, work authorization and visa sponsorship are not established by the partial summary.
+
+## Google — Software Engineering Intern, BS, Summer 2027 - US
+
+ID: google-swe-us-preview
+
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/100648618540573382-software-engineering-intern-bs-summer-2027>) (partial capture, 2026-11-18)
+
+Verdict is skip. Eligibility is unverified. Human review is pending.
+
+Rationale: The US software engineering role fits the software interest. Skip it as an application lead from this capture because the indexed preview&#39;s anticipated deadline had passed and the employer page could not be retrieved.
+
+Requirements
+
+- Be in the US during the internship, according to the preview. (evidence: The preview requires being in the US during the internship)
+
+Dates
+
+- `application_deadline` — until September 25, 2026 (evidence: The anticipated application window ran until September 25, 2026 and could close earlier if projects filled.)
+- `other` — summer 2027 (evidence: a US summer 2027 bachelor&#39;s software engineering internship)
+
+Unknowns
+
+- The captured window was anticipated and could close early. Direct retrieval failed, so a current opening, full mandatory qualifications and exact placement dates were not confirmed.
+- The preview describes a bachelor&#39;s internship and identifies a US degree program and 12 full-time weeks outside term as preferred. Confirm complete degree and work authorization requirements and visa sponsorship with the employer if the role reappears.

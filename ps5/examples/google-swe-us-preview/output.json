@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "google-swe-us-preview",
+  "title": "Software Engineering Intern, BS, Summer 2027 - US",
+  "company": "Google",
+  "source_url": "https://www.google.com/about/careers/applications/jobs/results/100648618540573382-software-engineering-intern-bs-summer-2027",
+  "captured_on": "2026-11-18",
+  "input_sha256": "75f1afa07f9db858e7c0b32bc1b5c69bc139899f042fc12c4fddb59b2c1d6914",
+  "criteria_sha256": "1dce773b24ec1dc9f9b16d68fa4833063b9f63d0ba9f6e4096383ef41dd5d002",
+  "processed_at": "2026-11-19T05:00:30.775Z",
+  "human_review": "pending",
+  "review": {
+    "schema_version": 1,
+    "verdict": "skip",
+    "eligibility": "unverified",
+    "rationale": "The US software engineering role fits the software interest. Skip it as an application lead from this capture because the indexed preview's anticipated deadline had passed and the employer page could not be retrieved.",
+    "requirements": [
+      {
+        "text": "Be in the US during the internship, according to the preview.",
+        "evidence": "The preview requires being in the US during the internship"
+      }
+    ],
+    "dates": [
+      {
+        "kind": "application_deadline",
+        "value": "until September 25, 2026",
+        "evidence": "The anticipated application window ran until September 25, 2026 and could close earlier if projects filled."
+      },
+      {
+        "kind": "other",
+        "value": "summer 2027",
+        "evidence": "a US summer 2027 bachelor's software engineering internship"
+      }
+    ],
+    "missing_fields": [],
+    "unknowns": [
+      "The captured window was anticipated and could close early. Direct retrieval failed, so a current opening, full mandatory qualifications and exact placement dates were not confirmed.",
+      "The preview describes a bachelor's internship and identifies a US degree program and 12 full-time weeks outside term as preferred. Confirm complete degree and work authorization requirements and visa sponsorship with the employer if the role reappears."
+    ],
+    "apply_url": "https://www.google.com/about/careers/applications/jobs/results/100648618540573382-software-engineering-intern-bs-summer-2027"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "verdict": "explore",
+  "eligibility": "unverified",
+  "rationale": "This US software engineering internship directly fits the software interest. The summary describes a full-time, in-person summer placement and continuous application review.",
+  "requirements": [
+    {
+      "text": "At least 18 years old and studying computing or a related STEM subject at bachelor's level or higher.",
+      "evidence": "Applicants must be 18 or older, studying computing or a related STEM subject at bachelor's level or higher"
+    },
+    {
+      "text": "Programming, data structures and AI-assisted development experience.",
+      "evidence": "have programming, data-structure and AI-assisted development experience."
+    },
+    {
+      "text": "Expected graduation in the stated window with studies remaining after the internship.",
+      "evidence": "Expected graduation: October 2027 through September 2029. Some studies must remain after the internship."
+    },
+    {
+      "text": "Available full time and in person for the 12-week summer placement.",
+      "evidence": "Summer placement lasts 12 weeks, begins May/June 2027 and finishes August/September 2027. Work is in person and full time."
+    }
+  ],
+  "dates": [
+    {
+      "kind": "program_start",
+      "value": "May/June 2027",
+      "evidence": "begins May/June 2027"
+    },
+    {
+      "kind": "program_end",
+      "value": "August/September 2027",
+      "evidence": "finishes August/September 2027"
+    },
+    {
+      "kind": "graduation_window",
+      "value": "October 2027 through September 2029",
+      "evidence": "Expected graduation: October 2027 through September 2029"
+    }
+  ],
+  "missing_fields": [
+    "application_deadline"
+  ],
+  "unknowns": [
+    "Applications are considered continuously. The partial capture has no fixed closing date and does not establish current availability.",
+    "Confirm assigned location, exact placement dates and whether a winter or fall placement is offered.",
+    "Work authorization, visa sponsorship and other qualifications omitted from the summary need checking."
+  ],
+  "apply_url": "https://www.amazon.jobs/en/jobs/10552937/software-development-engineer-intern-summer-2027-usa"
+}

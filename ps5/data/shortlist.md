@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 3. Captures awaiting a saved review: 7.
+Saved reviews: 4. Captures awaiting a saved review: 6.
 
-Pending capture IDs: amazon-sde-us, amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: amazon-ux-design, amazon-ux-research, google-forward-deployed, google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -95,3 +95,34 @@ Unknowns
 - The partial summary provides no application closing date and does not establish current availability.
 - The title says two months and the body says 22-24 weeks. The actual duration and end date remain unresolved.
 - Confirm the degree level, discipline and enrollment or completion status accepted by the employer, as well as local work authorization and sponsorship requirements.
+
+## Amazon — Software Development Engineer Intern - Summer 2027 &#40;USA&#41;
+
+ID: amazon-sde-us
+
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10552937/software-development-engineer-intern-summer-2027-usa>) (partial capture, 2026-11-18)
+
+Verdict is explore. Eligibility is unverified. Human review is pending.
+
+Rationale: This US software engineering internship directly fits the software interest. The summary describes a full-time, in-person summer placement and continuous application review.
+
+Requirements
+
+- At least 18 years old and studying computing or a related STEM subject at bachelor&#39;s level or higher. (evidence: Applicants must be 18 or older, studying computing or a related STEM subject at bachelor&#39;s level or higher)
+- Programming, data structures and AI-assisted development experience. (evidence: have programming, data-structure and AI-assisted development experience.)
+- Expected graduation in the stated window with studies remaining after the internship. (evidence: Expected graduation&#58; October 2027 through September 2029. Some studies must remain after the internship.)
+- Available full time and in person for the 12-week summer placement. (evidence: Summer placement lasts 12 weeks, begins May/June 2027 and finishes August/September 2027. Work is in person and full time.)
+
+Dates
+
+- `program_start` — May/June 2027 (evidence: begins May/June 2027)
+- `program_end` — August/September 2027 (evidence: finishes August/September 2027)
+- `graduation_window` — October 2027 through September 2029 (evidence: Expected graduation&#58; October 2027 through September 2029)
+
+Missing from the extraction: application deadline.
+
+Unknowns
+
+- Applications are considered continuously. The partial capture has no fixed closing date and does not establish current availability.
+- Confirm assigned location, exact placement dates and whether a winter or fall placement is offered.
+- Work authorization, visa sponsorship and other qualifications omitted from the summary need checking.

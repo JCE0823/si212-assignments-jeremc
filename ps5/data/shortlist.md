@@ -2,7 +2,7 @@
 
 Saved captures may be partial. Verify original postings. Recommendations and eligibility are unverified.
 
-Saved reviews: 10. Captures awaiting a saved review: 0.
+Saved reviews: 11. Captures awaiting a saved review: 0.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -185,6 +185,37 @@ Unknowns
 
 - No application deadline was captured. Check current availability, assigned office and exact dates.
 - Confirm which programs qualify, what the creative samples must contain and the work authorization requirements in light of the sponsorship restriction.
+
+## Amazon — UX Researcher Intern - Summer 2027
+
+ID: amazon-ux-research-degree-review
+
+Source: [Open posting](<https://www.amazon.jobs/en/jobs/10592767/ux-researcher-intern-summer-2027>) (captured 2026-11-18)
+
+Verdict is skip. Eligibility is unverified. Human review is pending.
+
+Rationale: Degree-program mismatch&#58; the saved posting requires pursuing a relevant master&#39;s degree or higher, while the supplied current program is a four-year bachelor&#39;s. Skip this lead for the current profile; other qualifications and future enrollment remain unverified.
+
+Requirements
+
+- At least 18 years old, enrolled in a US-located academic program and pursuing a relevant master&#39;s degree or higher with graduation in the stated window. (evidence: Applicants must be 18 or older, enrolled in a US-located academic program, and pursuing a relevant master&#39;s degree or higher with graduation between December 2027 and June 2028.)
+- Research experience, at least two creative samples and willingness to relocate. (evidence: It requires research experience, at least two creative samples, and willingness to relocate.)
+- Available for 12 weeks of full-time office work. (evidence: The role calls for full-time office work for 12 weeks.)
+- Visa sponsorship is unavailable. (evidence: Visa sponsorship is not offered.)
+
+Dates
+
+- `program_start` — May/June 2027 (evidence: starts May/June 2027)
+- `program_end` — August/September 2027 (evidence: finishes August/September 2027)
+- `graduation_window` — between December 2027 and June 2028 (evidence: graduation between December 2027 and June 2028)
+
+Missing from the extraction: application deadline.
+
+Unknowns
+
+- No application deadline was captured. Check current availability, assigned office and exact dates.
+- Confirm which programs qualify, what the creative samples must contain and the work authorization requirements in light of the sponsorship restriction.
+- The student supplied a four-year bachelor&#39;s program, not a major, current class standing or expected graduation date. No future graduate enrollment or completed qualifications were supplied.
 
 ## Google — Forward Deployed Engineering Intern, BS/MS, Summer 2027
 

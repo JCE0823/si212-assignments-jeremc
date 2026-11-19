@@ -5,6 +5,13 @@
 The tracker helps you decide which internships to investigate. Each run starts
 when a posting is selected.
 
+The current profile is a four-year bachelor's program. Major, current class
+standing and expected graduation are unknown. The agent checks mandatory
+degree enrollment before recommending a role; graduate-only enrollment is
+a mismatch with this profile. Other eligibility remains unverified. Original
+examples retain their earlier criteria hashes. See the [revision comparisons](examples/REVISIONS.md)
+for new runs under the revised rules.
+
 1. Give the agent an employer posting URL or delegate selection. The agent
    follows `ps5/skills/capture-posting/SKILL.md` to save the posting and its
    source details under a fresh ID.
@@ -98,5 +105,6 @@ The initial design (diagram, skill and spec) is in commit
 `f4dcfb87e53db25f40ee84953ceb405b0e9b83ba`. Setting that hash in
 `ps5/CHANGES.md` is still pending. The installed `changes.mjs` tool has no
 initializer, and the course instructions reserve direct edits for the
-student. Two qualifying student-guided revisions, writeups in the student's
-own words, and attestation remain.
+student. Requested revisions are being saved as separate commits and new
+example IDs. The change record still needs attribution, writeups in the
+student's own words and attestation before submission.

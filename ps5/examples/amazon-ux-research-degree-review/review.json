@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "verdict": "skip",
+  "eligibility": "unverified",
+  "rationale": "Degree-program mismatch: the saved posting requires pursuing a relevant master's degree or higher, while the supplied current program is a four-year bachelor's. Skip this lead for the current profile; other qualifications and future enrollment remain unverified.",
+  "requirements": [
+    {
+      "text": "At least 18 years old, enrolled in a US-located academic program and pursuing a relevant master's degree or higher with graduation in the stated window.",
+      "evidence": "Applicants must be 18 or older, enrolled in a US-located academic program, and pursuing a relevant master's degree or higher with graduation between December 2027 and June 2028."
+    },
+    {
+      "text": "Research experience, at least two creative samples and willingness to relocate.",
+      "evidence": "It requires research experience, at least two creative samples, and willingness to relocate."
+    },
+    {
+      "text": "Available for 12 weeks of full-time office work.",
+      "evidence": "The role calls for full-time office work for 12 weeks."
+    },
+    {
+      "text": "Visa sponsorship is unavailable.",
+      "evidence": "Visa sponsorship is not offered."
+    }
+  ],
+  "dates": [
+    {
+      "kind": "program_start",
+      "value": "May/June 2027",
+      "evidence": "starts May/June 2027"
+    },
+    {
+      "kind": "program_end",
+      "value": "August/September 2027",
+      "evidence": "finishes August/September 2027"
+    },
+    {
+      "kind": "graduation_window",
+      "value": "between December 2027 and June 2028",
+      "evidence": "graduation between December 2027 and June 2028"
+    }
+  ],
+  "missing_fields": [
+    "application_deadline"
+  ],
+  "unknowns": [
+    "No application deadline was captured. Check current availability, assigned office and exact dates.",
+    "Confirm which programs qualify, what the creative samples must contain and the work authorization requirements in light of the sponsorship restriction.",
+    "The student supplied a four-year bachelor's program, not a major, current class standing or expected graduation date. No future graduate enrollment or completed qualifications were supplied."
+  ],
+  "apply_url": "https://www.amazon.jobs/en/jobs/10592767/ux-researcher-intern-summer-2027"
+}

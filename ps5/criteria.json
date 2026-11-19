@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "purpose": "Explore software, data and user experience internships",
-  "preference_status": "Agent-selected starting defaults; student has not supplied a personal profile",
-  "confirmed_qualifications": {},
+  "preference_status": "Exploration interests remain starting defaults; current degree program supplied by the student on 2026-11-19",
+  "confirmed_qualifications": {
+    "current_degree_program_level": "bachelor",
+    "program_duration_years": 4,
+    "major": null,
+    "expected_graduation": null,
+    "note": "Student said \"bachelor four year\" in response to a question about the degree being pursued. Four years describes program length, not current class standing or a graduation date."
+  },
   "eligibility_policy": "unverified"
 }

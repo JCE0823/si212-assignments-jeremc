@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "google-swe-shanghai-deadline-review",
+  "title": "Software Engineering Intern, Summer 2027 - Shanghai",
+  "company": "Google",
+  "source_url": "https://www.google.com/about/careers/applications/jobs/results/95046224276529862-software-engineering-intern/",
+  "captured_on": "2026-11-18",
+  "input_sha256": "9957e7a4a38a397fca5cae6fe20ce2e7e6cbdeeb4b0229e609e7e8c89842969f",
+  "criteria_sha256": "0ce2ccfca0e02f1d9271e9ef1098de272b1e7a76f7a1a898ad800b389820e86c",
+  "processed_at": "2026-11-19T06:56:05.061Z",
+  "human_review": "pending",
+  "review": {
+    "schema_version": 1,
+    "verdict": "needs_review",
+    "eligibility": "unverified",
+    "rationale": "Deadline year unconfirmed: the captured application window says until November 30 without a year and may close earlier. Review the employer source before treating this thematically relevant software internship as an application lead.",
+    "requirements": [
+      {
+        "text": "Computing-related bachelor's or master's enrollment, penultimate academic year and general-purpose coding experience.",
+        "evidence": "Minimum requirements include enrollment in a computing-related bachelor's or master's degree, penultimate academic year and experience coding in a general-purpose language."
+      },
+      {
+        "text": "English proficiency plus a current CV and an official or unofficial transcript in English.",
+        "evidence": "English proficiency is required. Applications need a current CV and an official or unofficial transcript in English."
+      },
+      {
+        "text": "Available for 10-12 full-time weeks.",
+        "evidence": "requiring 10-12 full-time weeks."
+      }
+    ],
+    "dates": [
+      {
+        "kind": "application_deadline",
+        "value": "until November 30",
+        "evidence": "The page gives an anticipated application window until November 30, with no year printed in that sentence, and says projects filling up may close it sooner."
+      },
+      {
+        "kind": "other",
+        "value": "summer 2027",
+        "evidence": "Software engineering internship for summer 2027"
+      }
+    ],
+    "missing_fields": [],
+    "unknowns": [
+      "Deadline year unconfirmed: November 30 has no year in the captured deadline sentence. Confirm the year, exact cutoff and current availability; do not infer them from summer 2027 or the capture date.",
+      "The supplied current program is a four-year bachelor's. Major, current class standing and expected graduation were not supplied, so the computing-field and penultimate-year conditions remain unverified.",
+      "Exact placement start and end dates, work authorization and visa sponsorship are not established by the saved partial capture."
+    ],
+    "apply_url": "https://www.google.com/about/careers/applications/jobs/results/95046224276529862-software-engineering-intern/"
+  }
+}

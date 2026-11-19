@@ -31,7 +31,7 @@
         <bpmn:targetRef>evidence_capture</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="assess_posting" name="Assess posting fit&#10;assess-posting.md">
+    <bpmn:serviceTask id="assess_posting" name="Assess fit and dates&#10;assess-posting.md">
       <bpmn:documentation>ps5/skills/assess-posting/SKILL.md</bpmn:documentation>
       <bpmn:incoming>to_assess_posting</bpmn:incoming>
       <bpmn:outgoing>to_validate_save_review</bpmn:outgoing>

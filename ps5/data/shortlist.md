@@ -2,7 +2,7 @@
 
 Saved captures may be partial. Verify original postings. Recommendations and eligibility are unverified.
 
-Saved reviews: 11. Captures awaiting a saved review: 0.
+Saved reviews: 12. Captures awaiting a saved review: 0.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -295,6 +295,33 @@ Unknowns
 
 - The anticipated November 30 cutoff has no year in the captured sentence and the employer may close the window earlier. Confirm the year, cutoff and current availability.
 - Exact placement start and end dates, work authorization and visa sponsorship are not established by the partial summary.
+
+## Google — Software Engineering Intern, Summer 2027 - Shanghai
+
+ID: google-swe-shanghai-deadline-review
+
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/95046224276529862-software-engineering-intern/>) (captured 2026-11-18)
+
+Verdict is needs_review. Eligibility is unverified. Human review is pending.
+
+Rationale: Deadline year unconfirmed&#58; the captured application window says until November 30 without a year and may close earlier. Review the employer source before treating this thematically relevant software internship as an application lead.
+
+Requirements
+
+- Computing-related bachelor&#39;s or master&#39;s enrollment, penultimate academic year and general-purpose coding experience. (evidence: Minimum requirements include enrollment in a computing-related bachelor&#39;s or master&#39;s degree, penultimate academic year and experience coding in a general-purpose language.)
+- English proficiency plus a current CV and an official or unofficial transcript in English. (evidence: English proficiency is required. Applications need a current CV and an official or unofficial transcript in English.)
+- Available for 10-12 full-time weeks. (evidence: requiring 10-12 full-time weeks.)
+
+Dates
+
+- `application_deadline` — until November 30 (evidence: The page gives an anticipated application window until November 30, with no year printed in that sentence, and says projects filling up may close it sooner.)
+- `other` — summer 2027 (evidence: Software engineering internship for summer 2027)
+
+Unknowns
+
+- Deadline year unconfirmed&#58; November 30 has no year in the captured deadline sentence. Confirm the year, exact cutoff and current availability; do not infer them from summer 2027 or the capture date.
+- The supplied current program is a four-year bachelor&#39;s. Major, current class standing and expected graduation were not supplied, so the computing-field and penultimate-year conditions remain unverified.
+- Exact placement start and end dates, work authorization and visa sponsorship are not established by the saved partial capture.
 
 ## Google — Software Engineering Intern, BS, Summer 2027 - US
 

@@ -8,7 +8,10 @@ when a posting is selected.
 The current profile is a four-year bachelor's program. Major, current class
 standing and expected graduation are unknown. The agent checks mandatory
 degree enrollment before recommending a role; graduate-only enrollment is
-a mismatch with this profile. Other eligibility remains unverified. Original
+a mismatch with this profile. An application deadline without a confirmed year
+changes an otherwise exploratory result to `needs_review`, with the warning
+first. A stated rolling policy is handled separately. Other eligibility remains
+unverified. Original
 examples retain their earlier criteria hashes. See the [revision comparisons](examples/REVISIONS.md)
 for new runs under the revised rules.
 

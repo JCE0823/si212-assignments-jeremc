@@ -2,9 +2,9 @@
 
 Source captures are partial. Recommendations and eligibility are unverified.
 
-Saved reviews: 7. Captures awaiting a saved review: 3.
+Saved reviews: 8. Captures awaiting a saved review: 2.
 
-Pending capture IDs: google-sre-emea-archived, google-swe-shanghai, google-swe-us-preview.
+Pending capture IDs: google-swe-shanghai, google-swe-us-preview.
 
 ## Amazon — Software Development Engineer Intern, AWS Database - 2027 &#40;US&#41;
 
@@ -214,3 +214,29 @@ Unknowns
 - The partial summary cannot confirm availability or an exact cutoff time. Verify both at the employer source, given the short window recorded at capture.
 - The introduction targets penultimate-year students. US study, returning to a degree and 12 full-time weeks outside term are listed as preferred. Check how the employer applies these conditions.
 - Exact placement dates, work authorization and visa sponsorship are not established by this summary.
+
+## Google — Software Engineering, Site Reliability Engineering BS/MS Intern, 2027
+
+ID: google-sre-emea-archived
+
+Source: [Open posting](<https://www.google.com/about/careers/applications/jobs/results/142747733357142726-software-engineering-site-reliability-engineering-bsms-intern-2027>) (partial capture, 2026-11-18)
+
+Verdict is skip. Eligibility is unverified. Human review is pending.
+
+Rationale: Software and site reliability engineering fit the software interest. Skip this archived opportunity because the recorded deadline had passed at capture and the direct employer page returned Job not found.
+
+Requirements
+
+- The preview targets penultimate- or final-year bachelor&#39;s or master&#39;s students at institutions in EMEA. (evidence: The preview targets penultimate/final-year bachelor&#39;s or master&#39;s students at EMEA institutions)
+- Stay in an advertised internship country. The preview says immigration sponsorship is unavailable. (evidence: requires staying in an advertised internship country, and states immigration sponsorship is unavailable.)
+- The preview describes 13-17 weeks of full-time work. (evidence: It describes 13-17 weeks of full-time work)
+
+Dates
+
+- `application_deadline` — before October 23, 2026 (evidence: It asked for applications before October 23, 2026, already past the capture date.)
+- `program_start` — May, June or July 2027 (evidence: starting May, June or July 2027)
+
+Unknowns
+
+- The historical official-careers preview is partial. The direct page said the job might have been taken down, so a current posting or replacement opportunity was not verified.
+- Exact dates, the complete country and eligibility details, and any work authorization conditions beyond the stated sponsorship restriction remain unconfirmed.

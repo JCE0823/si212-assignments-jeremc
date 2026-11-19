@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "verdict": "skip",
+  "eligibility": "unverified",
+  "rationale": "Software and site reliability engineering fit the software interest. Skip this archived opportunity because the recorded deadline had passed at capture and the direct employer page returned Job not found.",
+  "requirements": [
+    {
+      "text": "The preview targets penultimate- or final-year bachelor's or master's students at institutions in EMEA.",
+      "evidence": "The preview targets penultimate/final-year bachelor's or master's students at EMEA institutions"
+    },
+    {
+      "text": "Stay in an advertised internship country. The preview says immigration sponsorship is unavailable.",
+      "evidence": "requires staying in an advertised internship country, and states immigration sponsorship is unavailable."
+    },
+    {
+      "text": "The preview describes 13-17 weeks of full-time work.",
+      "evidence": "It describes 13-17 weeks of full-time work"
+    }
+  ],
+  "dates": [
+    {
+      "kind": "application_deadline",
+      "value": "before October 23, 2026",
+      "evidence": "It asked for applications before October 23, 2026, already past the capture date."
+    },
+    {
+      "kind": "program_start",
+      "value": "May, June or July 2027",
+      "evidence": "starting May, June or July 2027"
+    }
+  ],
+  "missing_fields": [],
+  "unknowns": [
+    "The historical official-careers preview is partial. The direct page said the job might have been taken down, so a current posting or replacement opportunity was not verified.",
+    "Exact dates, the complete country and eligibility details, and any work authorization conditions beyond the stated sponsorship restriction remain unconfirmed."
+  ],
+  "apply_url": "https://www.google.com/about/careers/applications/jobs/results/142747733357142726-software-engineering-site-reliability-engineering-bsms-intern-2027"
+}

@@ -17,3 +17,19 @@ the tracker mark Amazon intern as explore even though it reqires master or highe
 ### Why this fix (my own words)
 
 bc it is more percise so that ppl with bachloer's only wont have job appication with master only
+
+## 2. Flag application deadlines without a confirmed year
+
+- **Changed:** skill assess-posting
+- **Commit:** 2d8d6bd
+- **Who noticed:** me
+- **Who chose the fix:** the agent
+- **What changed:** Change otherwise exploratory postings to needs_review when a captured calendar deadline has no confirmed year. Put the warning first in the rationale and unknowns, preserve the original date phrase, and avoid inferring a year.
+
+### What was wrong (my own words)
+
+it fix that when the year of the deadline is unclear, it will let the human check it manually
+
+### Why this fix (my own words)
+
+bc when letting human check those unclear one so that the expired one wont be in the list
